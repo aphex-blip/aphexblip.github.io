@@ -7,77 +7,118 @@
 
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
-      background: #f5f5f5;
+      background: #ffffff;
+      color: #333;
     }
 
-    header {
-      background: black;
-      color: white;
+    /* Navigation Bar */
+    nav {
+      background: #000;
       padding: 15px;
-      text-align: center;
-      font-size: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .logo {
+      font-size: 20px;
+      letter-spacing: 2px;
     }
 
     .container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-      padding: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
     }
 
     .product {
-      background: white;
-      padding: 10px;
-      border-radius: 10px;
+      background: #fff;
+      padding: 0;
+      border-radius: 0; /* Modern sharp look */
       text-align: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: 0.3s;
     }
 
+    /* This part makes all images look perfectly uniform */
     .product img {
       width: 100%;
-      border-radius: 10px;
+      height: 350px;
+      object-fit: cover; /* Crops image to fit without stretching */
+    }
+
+    .product-info {
+      padding: 15px;
     }
 
     .price {
       font-weight: bold;
-      margin: 10px 0;
+      font-size: 18px;
+      margin: 5px 0;
     }
 
     .btn {
-      display: inline-block;
-      padding: 10px;
-      background: #25D366;
+      display: block;
+      padding: 12px;
+      background: #000; /* Sleek black button */
       color: white;
       text-decoration: none;
-      border-radius: 5px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      background: #25D366; /* Turns green on hover */
     }
   </style>
 </head>
 
 <body>
 
-<header>UrbanWear</header>
+<nav>
+  <div class="logo" style="color:white;">URBANWEAR</div>
+  <div>
+    <a href="index.html">HOME</a>
+    <a href="#">SHOP</a>
+    <a href="#">ABOUT</a>
+  </div>
+</nav>
 
 <div class="container">
 
   <div class="product">
-    <img src="black-t-shirt.jpg" alt="Black T-shirt">
-    <h3>Black T-Shirt</h3>
-    <p class="price">Rs. 2500</p>
-    <a class="btn" href="https://wa.me/947XXXXXXXX?text=Hi! I want to order the Black T-Shirt">
-      Order on WhatsApp
-    </a>
+    <img src="black-t-shirt.jpg" alt="T-shirt">
+    <div class="product-info">
+      <h3>Black T-Shirt</h3>
+      <p class="price">Rs. 2500</p>
+      <a class="btn" href="https://wa.me/94725050456?text=Hi! I want to order the Black T-Shirt">Order on WhatsApp</a>
+    </div>
   </div>
 
   <div class="product">
-    <img src="grey-hoodie.jpg" alt="Grey Hoodie">
-    <h3>Grey Hoodie</h3>
-    <p class="price">Rs. 4500</p>
-    <a class="btn" href="https://wa.me/947XXXXXXXX?text=Hi! I want to order the Grey Hoodie">
-      Order on WhatsApp
-    </a>
+    <img src="grey-hoodie.jpg" alt="Hoodie">
+    <div class="product-info">
+      <h3>Grey Hoodie</h3>
+      <p class="price">Rs. 4500</p>
+      <a class="btn" href="https://wa.me/94725050456?text=Hi! I want to order the Grey Hoodie">Order on WhatsApp</a>
+    </div>
   </div>
 
 </div>
