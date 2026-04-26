@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shop | UrbanWear</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* We use the exact same styles from index.html for a seamless feel */
+    body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #fff; color: #333; }
+    nav { background: #000; padding: 15px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+    nav a { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 14px; }
+    .logo { font-size: 20px; letter-spacing: 2px; color: white; }
+    
+    .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 40px 20px; max-width: 1200px; margin: auto; }
+    .product { text-align: center; }
+    .product img { width: 100%; height: auto; max-height: 500px; object-fit: contain; background: #f9f9f9; }
+    .product-info { padding: 15px; }
+    .price { font-weight: bold; font-size: 18px; margin: 5px 0; }
+    .btn { display: block; padding: 12px; background: #000; color: white; text-decoration: none; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-top: 10px; }
+    .btn:hover { background: #25D366; }
+    
+    .shop-header { text-align: center; padding: 40px 0 0 0; text-transform: uppercase; letter-spacing: 4px; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">URBANWEAR</div>
+  <div>
+    <a href="index.html">HOME</a>
+    <a href="shop.html">SHOP</a>
+    <a href="about.html">ABOUT</a>
+  </div>
+</nav>
+
+<div class="shop-header">
+  <h1>Full Collection</h1>
+</div>
+
+<div class="container">
+  <div class="product">
+    <img src="black-t-shirt.jpg" alt="Black T-shirt">
+    <div class="product-info">
+      <h3>Black T-Shirt</h3>
+      <p class="price">Rs. 2500</p>
+      <a class="btn" href="https://wa.me/947XXXXXXXX?text=Hi! I want to order the Black T-Shirt">Order on WhatsApp</a>
+    </div>
+  </div>
+
+  <div class="product">
+    <img src="grey-hoodie.jpg" alt="Grey Hoodie">
+    <div class="product-info">
+      <h3>Grey Hoodie</h3>
+      <p class="price">Rs. 4500</p>
+      <a class="btn" href="https://wa.me/947XXXXXXXX?text=Hi! I want to order the Grey Hoodie">Order on WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
