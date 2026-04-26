@@ -58,8 +58,10 @@
     /* This part makes all images look perfectly uniform */
     .product img {
       width: 100%;
-      height: 350px;
-      object-fit: cover; /* Crops image to fit without stretching */
+      height: auto; /* This ensures the whole image shows without cropping */
+      max-height: 500px; /* Prevents images from being too long */
+      object-fit: contain; 
+      background: #f9f9f9; /* Adds a light background for consistency */
     }
 
     .product-info {
@@ -96,8 +98,8 @@
   <div class="logo" style="color:white;">URBANWEAR</div>
   <div>
     <a href="index.html">HOME</a>
-    <a href="#">SHOP</a>
-    <a href="#">ABOUT</a>
+    <a href="shop.html">SHOP</a>
+    <a href="about.html">ABOUT</a>
   </div>
 </nav>
 
