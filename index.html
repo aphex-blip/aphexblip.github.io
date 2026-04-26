@@ -2,110 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>UrbanWear</title>
+  <title>LINDI CLOTHING | Home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <style>
-    body {
-      font-family: 'Georgia', serif; /* A more elegant font for your brand */
-      margin: 0;
-      background: #fdfdfd; /* Off-white for a premium feel */
-      color: #333;
+    body { font-family: 'Georgia', serif; margin: 0; background: #ffffff; color: #333; }
+    
+    /* Navigation */
+    nav { 
+      background: #f9f9f9; 
+      padding: 10px 20px; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      position: sticky; 
+      top: 0; 
+      z-index: 100; 
+      border-bottom: 1px solid #eee; 
     }
+    .logo-container { display: flex; align-items: center; text-decoration: none; }
+    .logo-img { height: 50px; margin-right: 10px; }
+    .brand-name { font-size: 22px; letter-spacing: 3px; color: #333; font-weight: bold; text-transform: uppercase; }
+    nav a { color: #555; text-decoration: none; margin: 0 15px; font-size: 13px; letter-spacing: 1px; font-weight: bold; }
 
-    nav {
-      background: #ffffff;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      border-bottom: 1px solid #eee;
-    }
+    /* Product Grid */
+    .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 60px 20px; max-width: 1200px; margin: auto; }
+    .product { background: #fff; text-align: center; }
+    .product img { width: 100%; height: auto; max-height: 550px; object-fit: contain; background: #fdfdfd; }
+    .product-info { padding: 20px 0; }
+    .price { font-size: 18px; color: #888; margin: 10px 0; }
+    
+    /* Buttons */
+    .btn { display: block; padding: 15px; background: #4A4A4A; color: white; text-decoration: none; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
+    .btn:hover { background: #9BA88E; }
 
-    .logo-container {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-    }
-
-    .logo-img {
-      height: 50px; /* Adjust based on your logo shape */
-      margin-right: 10px;
-    }
-
-    .brand-name {
-      font-size: 22px;
-      letter-spacing: 3px;
-      color: #333;
-      font-weight: bold;
-      text-transform: uppercase;
-    }
-
-    nav a {
-      color: #555;
-      text-decoration: none;
-      margin: 0 15px;
-      font-size: 13px;
-      letter-spacing: 1px;
-    }
-
-    .container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      padding: 60px 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .product {
-      background: #fff;
-      text-align: center;
-      transition: 0.3s;
-    }
-
-    .product img {
-      width: 100%;
-      height: auto;
-      max-height: 550px;
-      object-fit: contain;
-      background: #f9f9f9;
-    }
-
-    .price {
-      font-size: 18px;
-      color: #888;
-      margin: 10px 0;
-    }
-
-    .btn {
-      display: block;
-      padding: 15px;
-      background: #4A4A4A; /* Dark charcoal from your logo */
-      color: white;
-      text-decoration: none;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    .btn:hover {
-      background: #9BA88E; /* Sage green from your logo */
-    }
-
-    footer {
-      text-align: center;
-      padding: 40px;
-      font-size: 12px;
-      color: #999;
-      letter-spacing: 1px;
-    }
+    /* Footer */
+    footer { background: #f9f9f9; text-align: center; padding: 40px; font-size: 12px; color: #999; letter-spacing: 1px; border-top: 1px solid #eee; }
   </style>
 </head>
-
 <body>
 
 <nav>
@@ -121,9 +54,8 @@
 </nav>
 
 <div class="container">
-
   <div class="product">
-    <img src="black-t-shirt.jpg" alt="T-shirt">
+    <img src="black-t-shirt.jpg" alt="Black T-shirt">
     <div class="product-info">
       <h3>Black T-Shirt</h3>
       <p class="price">Rs. 2500</p>
@@ -132,19 +64,19 @@
   </div>
 
   <div class="product">
-    <img src="grey-hoodie.jpg" alt="Hoodie">
+    <img src="grey-hoodie.jpg" alt="Grey Hoodie">
     <div class="product-info">
       <h3>Grey Hoodie</h3>
       <p class="price">Rs. 4500</p>
       <a class="btn" href="https://wa.me/94725050456?text=Hi! I want to order the Grey Hoodie">Order on WhatsApp</a>
     </div>
   </div>
-
 </div>
 
-</body>
 <footer>
   <p>HANDCRAFTED | SUSTAINABLE | STYLE</p>
   <p>&copy; 2026 LINDI CLOTHING - MADE IN SRI LANKA</p>
 </footer>
+
+</body>
 </html>
