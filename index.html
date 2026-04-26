@@ -7,87 +7,101 @@
 
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Georgia', serif; /* A more elegant font for your brand */
       margin: 0;
-      background: #ffffff;
+      background: #fdfdfd; /* Off-white for a premium feel */
       color: #333;
     }
 
-    /* Navigation Bar */
     nav {
-      background: #000;
-      padding: 15px;
+      background: #ffffff;
+      padding: 10px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: sticky;
       top: 0;
       z-index: 100;
+      border-bottom: 1px solid #eee;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      height: 50px; /* Adjust based on your logo shape */
+      margin-right: 10px;
+    }
+
+    .brand-name {
+      font-size: 22px;
+      letter-spacing: 3px;
+      color: #333;
+      font-weight: bold;
+      text-transform: uppercase;
     }
 
     nav a {
-      color: white;
+      color: #555;
       text-decoration: none;
       margin: 0 15px;
-      font-weight: bold;
-      font-size: 14px;
-    }
-
-    .logo {
-      font-size: 20px;
-      letter-spacing: 2px;
+      font-size: 13px;
+      letter-spacing: 1px;
     }
 
     .container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 40px 20px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      padding: 60px 20px;
       max-width: 1200px;
       margin: auto;
     }
 
     .product {
       background: #fff;
-      padding: 0;
-      border-radius: 0; /* Modern sharp look */
       text-align: center;
       transition: 0.3s;
     }
 
-    /* This part makes all images look perfectly uniform */
     .product img {
       width: 100%;
-      height: auto; /* This ensures the whole image shows without cropping */
-      max-height: 500px; /* Prevents images from being too long */
-      object-fit: contain; 
-      background: #f9f9f9; /* Adds a light background for consistency */
-    }
-
-    .product-info {
-      padding: 15px;
+      height: auto;
+      max-height: 550px;
+      object-fit: contain;
+      background: #f9f9f9;
     }
 
     .price {
-      font-weight: bold;
       font-size: 18px;
-      margin: 5px 0;
+      color: #888;
+      margin: 10px 0;
     }
 
     .btn {
       display: block;
-      padding: 12px;
-      background: #000; /* Sleek black button */
+      padding: 15px;
+      background: #4A4A4A; /* Dark charcoal from your logo */
       color: white;
       text-decoration: none;
-      font-size: 13px;
+      font-size: 12px;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-top: 10px;
+      letter-spacing: 2px;
     }
 
     .btn:hover {
-      background: #25D366; /* Turns green on hover */
+      background: #9BA88E; /* Sage green from your logo */
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      font-size: 12px;
+      color: #999;
+      letter-spacing: 1px;
     }
   </style>
 </head>
