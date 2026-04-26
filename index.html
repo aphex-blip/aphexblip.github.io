@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>LINDI CLOTHING | Home</title>
+  <title>LINDI CLOTHING | Sustainable Style</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     /* Modern Sans-Serif Stack */
@@ -11,10 +11,10 @@
       margin: 0; 
       background: #ffffff; 
       color: #222; 
-      line-height: 1.6;
+      overflow-x: hidden;
     }
     
-    /* Navigation - Kept your f9f9f9 color */
+    /* Navigation - Consistent f9f9f9 */
     nav { 
       background: #f9f9f9; 
       padding: 15px 30px; 
@@ -28,47 +28,93 @@
     }
     .logo-container { display: flex; align-items: center; text-decoration: none; }
     .logo-img { height: 45px; margin-right: 12px; }
-    .brand-name { 
-      font-size: 18px; 
-      letter-spacing: 4px; 
-      color: #333; 
-      font-weight: 500; 
-      text-transform: uppercase; 
-    }
+    .brand-name { font-size: 18px; letter-spacing: 4px; color: #333; font-weight: 500; text-transform: uppercase; }
     nav a { color: #666; text-decoration: none; margin: 0 15px; font-size: 12px; letter-spacing: 1.5px; font-weight: 500; }
 
-    /* Product Grid */
-    .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; padding: 60px 20px; max-width: 1200px; margin: auto; }
-    .product { background: #fff; text-align: center; transition: transform 0.3s ease; }
-    .product:hover { transform: translateY(-5px); } /* Subtle hover lift */
-    .product img { width: 100%; height: auto; max-height: 550px; object-fit: contain; background: #fdfdfd; }
-    
-    .product-info { padding: 25px 0; }
-    .product-info h3 { font-size: 16px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
-    .price { font-size: 15px; color: #888; margin-bottom: 15px; letter-spacing: 0.5px; }
-    
-    /* Modern Charcoal Button */
-    .btn { 
-      display: inline-block; 
-      width: 80%;
-      padding: 14px; 
-      background: #333; 
-      color: white; 
-      text-decoration: none; 
-      font-size: 11px; 
-      text-transform: uppercase; 
-      letter-spacing: 2px; 
-      transition: all 0.3s ease; 
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 80vh; /* Takes up 80% of the screen height */
+      width: 100%;
+      background: url('hero.png') no-repeat center center;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
     }
-    .btn:hover { background: #9BA88E; color: white; } /* Sage Green from your logo */
 
-    /* Footer */
-    footer { background: #f9f9f9; text-align: center; padding: 60px 20px; font-size: 11px; color: #aaa; letter-spacing: 2px; border-top: 1px solid #eee; text-transform: uppercase; }
-    
-    /* About Content Styling */
-    .content { max-width: 600px; margin: 100px auto; padding: 20px; text-align: center; }
-    .content h1 { font-weight: 400; letter-spacing: 6px; text-transform: uppercase; font-size: 24px; margin-bottom: 40px; }
-    .content p { color: #555; font-size: 16px; margin-bottom: 24px; font-weight: 300; }
+    /* Dark overlay to make text readable */
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.2); /* Very light dark tint */
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-content h1 {
+      font-size: 32px;
+      font-weight: 300;
+      letter-spacing: 8px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      text-shadow: 0px 2px 10px rgba(0,0,0,0.3);
+    }
+
+    .hero-btn {
+      display: inline-block;
+      padding: 18px 40px;
+      background: #ffffff;
+      color: #333;
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      transition: 0.3s ease;
+      font-weight: 600;
+    }
+
+    .hero-btn:hover {
+      background: #9BA88E; /* Sage Green from your logo */
+      color: white;
+    }
+
+    /* Statement Section */
+    .statement {
+      padding: 100px 20px;
+      text-align: center;
+      background: white;
+    }
+
+    .statement p {
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 18px;
+      font-weight: 300;
+      letter-spacing: 1px;
+      color: #555;
+      line-height: 1.8;
+    }
+
+    /* Footer - Consistent f9f9f9 */
+    footer { 
+      background: #f9f9f9; 
+      text-align: center; 
+      padding: 60px 20px; 
+      font-size: 11px; 
+      color: #aaa; 
+      letter-spacing: 2px; 
+      border-top: 1px solid #eee; 
+      text-transform: uppercase; 
+    }
   </style>
 </head>
 <body>
@@ -85,25 +131,16 @@
   </div>
 </nav>
 
-<div class="container">
-  <div class="product">
-    <img src="black-t-shirt.jpg" alt="Black T-shirt">
-    <div class="product-info">
-      <h3>Black T-Shirt</h3>
-      <p class="price">Rs. 2500</p>
-      <a class="btn" href="https://wa.me/94725050456?text=Hi! I want to order the Black T-Shirt">Order on WhatsApp</a>
-    </div>
+<section class="hero">
+  <div class="hero-content">
+    <h1>Handcrafted Style</h1>
+    <a href="shop.html" class="hero-btn">Explore Collection</a>
   </div>
+</section>
 
-  <div class="product">
-    <img src="grey-hoodie.jpg" alt="Grey Hoodie">
-    <div class="product-info">
-      <h3>Grey Hoodie</h3>
-      <p class="price">Rs. 4500</p>
-      <a class="btn" href="https://wa.me/94725050456?text=Hi! I want to order the Grey Hoodie">Order on WhatsApp</a>
-    </div>
-  </div>
-</div>
+<section class="statement">
+  <p>Sustainable materials, timeless designs, and a commitment to quality. Based in Sri Lanka, made for the world.</p>
+</section>
 
 <footer>
   <p>HANDCRAFTED | SUSTAINABLE | STYLE</p>
