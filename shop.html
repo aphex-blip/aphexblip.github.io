@@ -17,16 +17,24 @@
 
     .shop-header { text-align: center; padding: 60px 0 20px 0; text-transform: uppercase; letter-spacing: 6px; font-weight: 300; font-size: 12px; }
 
-    /* Product Grid */
-    .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; padding: 20px; max-width: 1200px; margin: auto; }
+    /* Updated Grid for 4-5 Items */
+    .container { 
+      display: grid; 
+      /* minmax(220px) allows 4-5 items to fit on desktop while staying responsive */
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+      gap: 30px; 
+      padding: 20px; 
+      max-width: 1400px; /* Widened to support more items per row */
+      margin: auto; 
+    }
     
     .product { position: relative; text-align: center; overflow: hidden; }
 
-    /* 2. Image Consistency (Portrait 3:4 Ratio) */
+    /* Image Consistency (Portrait 3:4 Ratio) */
     .product-image-wrapper { 
       position: relative;
       width: 100%;
-      aspect-ratio: 3 / 4; /* Forces perfect portrait height */
+      aspect-ratio: 3 / 4; 
       overflow: hidden;
       background: #fdfdfd;
     }
@@ -34,44 +42,42 @@
     .product img { 
       width: 100%; 
       height: 100%; 
-      object-fit: cover; /* Ensures image fills the 3:4 box without stretching */
+      object-fit: cover; 
       transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
     }
 
-    /* Zoom effect on hover */
     .product:hover img { transform: scale(1.05); }
 
-    .product-info { padding: 20px 0; }
-    .product-info h3 { font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px; margin: 0 0 5px 0; }
-    .price { font-size: 14px; color: #888; font-weight: 300; }
+    .product-info { padding: 15px 0; }
+    .product-info h3 { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 5px 0; }
+    .price { font-size: 12px; color: #888; font-weight: 300; }
 
-    /* 1. Ghost Hover Button */
+    /* Ghost Hover Button */
     .btn-overlay {
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(255,255,255,0.1); /* Very subtle tint */
+      background: rgba(255,255,255,0.05); 
       display: flex;
       align-items: center;
       justify-content: center;
-      opacity: 0; /* Hidden by default */
+      opacity: 0; 
       transition: opacity 0.4s ease;
       z-index: 10;
     }
 
     .btn { 
-      padding: 15px 30px; 
+      padding: 12px 20px; 
       background: #333; 
       color: white; 
       text-decoration: none; 
-      font-size: 10px; 
+      font-size: 9px; 
       text-transform: uppercase; 
-      letter-spacing: 2px; 
+      letter-spacing: 1.5px; 
       font-weight: 600;
-      transform: translateY(20px); /* Starts slightly lower */
+      transform: translateY(15px); 
       transition: all 0.4s ease;
     }
 
-    /* Hover States */
     .product:hover .btn-overlay { opacity: 1; }
     .product:hover .btn { transform: translateY(0); }
     .btn:hover { background: #9BA88E; }
@@ -99,27 +105,41 @@
   <div class="product">
     <div class="product-image-wrapper">
       <img src="black-t-shirt.jpg" alt="Black T-shirt">
-      <div class="btn-overlay">
-        <a class="btn" href="https://wa.me/94725050456?text=Hi! I want to order the Black T-Shirt">Order on WhatsApp</a>
-      </div>
+      <div class="btn-overlay"><a class="btn" href="https://wa.me/94725050456?text=Hi! I want to order the Black T-Shirt">Order on WhatsApp</a></div>
     </div>
-    <div class="product-info">
-      <h3>Black T-Shirt</h3>
-      <p class="price">Rs. 2500</p>
-    </div>
+    <div class="product-info"><h3>Black T-Shirt</h3><p class="price">Rs. 2500</p></div>
   </div>
 
   <div class="product">
     <div class="product-image-wrapper">
       <img src="grey-hoodie.jpg" alt="Grey Hoodie">
-      <div class="btn-overlay">
-        <a class="btn" href="https://wa.me/94725050456?text=Hi! I want to order the Grey Hoodie">Order on WhatsApp</a>
-      </div>
+      <div class="btn-overlay"><a class="btn" href="https://wa.me/94725050456?text=Hi! I want to order the Grey Hoodie">Order on WhatsApp</a></div>
     </div>
-    <div class="product-info">
-      <h3>Grey Hoodie</h3>
-      <p class="price">Rs. 4500</p>
+    <div class="product-info"><h3>Grey Hoodie</h3><p class="price">Rs. 4500</p></div>
+  </div>
+
+  <div class="product">
+    <div class="product-image-wrapper">
+      <img src="product3.jpg" alt="Product 3">
+      <div class="btn-overlay"><a class="btn" href="https://wa.me/94725050456?text=Hi! I want to order Product 3">Order on WhatsApp</a></div>
     </div>
+    <div class="product-info"><h3>Signature Tee</h3><p class="price">Rs. 2800</p></div>
+  </div>
+
+  <div class="product">
+    <div class="product-image-wrapper">
+      <img src="product4.jpg" alt="Product 4">
+      <div class="btn-overlay"><a class="btn" href="https://wa.me/94725050456?text=Hi! I want to order Product 4">Order on WhatsApp</a></div>
+    </div>
+    <div class="product-info"><h3>Lindi Hoodie</h3><p class="price">Rs. 4800</p></div>
+  </div>
+
+  <div class="product">
+    <div class="product-image-wrapper">
+      <img src="product5.jpg" alt="Product 5">
+      <div class="btn-overlay"><a class="btn" href="https://wa.me/94725050456?text=Hi! I want to order Product 5">Order on WhatsApp</a></div>
+    </div>
+    <div class="product-info"><h3>Classic Joggers</h3><p class="price">Rs. 3500</p></div>
   </div>
 </div>
 
