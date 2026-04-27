@@ -5,62 +5,77 @@
   <title>Shop | LINDI CLOTHING</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    /* Modern Sans-Serif Stack */
-    body { 
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; 
-      margin: 0; 
-      background: #ffffff; 
-      color: #222; 
-      line-height: 1.6;
-    }
+    body { font-family: 'Inter', sans-serif; margin: 0; background: #ffffff; color: #222; }
     
-    /* Navigation - Consistent f9f9f9 */
-    nav { 
-      background: #f9f9f9; 
-      padding: 15px 30px; 
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center; 
-      position: sticky; 
-      top: 0; 
-      z-index: 100; 
-      border-bottom: 1px solid #eee; 
-    }
+    nav { background: #f9f9f9; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #eee; }
     .logo-container { display: flex; align-items: center; text-decoration: none; }
     .logo-img { height: 45px; margin-right: 12px; }
     .brand-name { font-size: 18px; letter-spacing: 4px; color: #333; font-weight: 500; text-transform: uppercase; }
     nav a { color: #666; text-decoration: none; margin: 0 15px; font-size: 12px; letter-spacing: 1.5px; font-weight: 500; }
 
-    .shop-header { text-align: center; padding: 80px 0 40px 0; text-transform: uppercase; letter-spacing: 6px; font-weight: 300; font-size: 14px; }
+    .shop-header { text-align: center; padding: 60px 0 20px 0; text-transform: uppercase; letter-spacing: 6px; font-weight: 300; font-size: 12px; }
 
     /* Product Grid */
-    .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; padding: 20px; max-width: 1200px; margin: auto; }
-    .product { background: #fff; text-align: center; transition: transform 0.3s ease; }
-    .product:hover { transform: translateY(-5px); }
-    .product img { width: 100%; height: auto; max-height: 550px; object-fit: contain; background: #fdfdfd; }
+    .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; padding: 20px; max-width: 1200px; margin: auto; }
     
-    .product-info { padding: 25px 0; }
-    .product-info h3 { font-size: 16px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
-    .price { font-size: 15px; color: #888; margin-bottom: 15px; letter-spacing: 0.5px; }
+    .product { position: relative; text-align: center; overflow: hidden; }
+
+    /* 2. Image Consistency (Portrait 3:4 Ratio) */
+    .product-image-wrapper { 
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3 / 4; /* Forces perfect portrait height */
+      overflow: hidden;
+      background: #fdfdfd;
+    }
     
-    /* Modern Charcoal Button */
+    .product img { 
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; /* Ensures image fills the 3:4 box without stretching */
+      transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+    }
+
+    /* Zoom effect on hover */
+    .product:hover img { transform: scale(1.05); }
+
+    .product-info { padding: 20px 0; }
+    .product-info h3 { font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px; margin: 0 0 5px 0; }
+    .price { font-size: 14px; color: #888; font-weight: 300; }
+
+    /* 1. Ghost Hover Button */
+    .btn-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(255,255,255,0.1); /* Very subtle tint */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0; /* Hidden by default */
+      transition: opacity 0.4s ease;
+      z-index: 10;
+    }
+
     .btn { 
-      display: inline-block; 
-      width: 85%;
-      padding: 14px; 
+      padding: 15px 30px; 
       background: #333; 
       color: white; 
       text-decoration: none; 
-      font-size: 11px; 
+      font-size: 10px; 
       text-transform: uppercase; 
       letter-spacing: 2px; 
-      transition: all 0.3s ease; 
       font-weight: 600;
+      transform: translateY(20px); /* Starts slightly lower */
+      transition: all 0.4s ease;
     }
+
+    /* Hover States */
+    .product:hover .btn-overlay { opacity: 1; }
+    .product:hover .btn { transform: translateY(0); }
     .btn:hover { background: #9BA88E; }
 
-    /* Footer - Consistent f9f9f9 */
     footer { background: #f9f9f9; text-align: center; padding: 60px 20px; font-size: 11px; color: #aaa; letter-spacing: 2px; border-top: 1px solid #eee; text-transform: uppercase; }
   </style>
 </head>
@@ -82,20 +97,28 @@
 
 <div class="container">
   <div class="product">
-    <img src="black-t-shirt.jpg" alt="Black T-shirt">
+    <div class="product-image-wrapper">
+      <img src="black-t-shirt.jpg" alt="Black T-shirt">
+      <div class="btn-overlay">
+        <a class="btn" href="https://wa.me/94725050456?text=Hi! I want to order the Black T-Shirt">Order on WhatsApp</a>
+      </div>
+    </div>
     <div class="product-info">
       <h3>Black T-Shirt</h3>
       <p class="price">Rs. 2500</p>
-      <a class="btn" href="https://wa.me/94725050456?text=Hi! I want to order the Black T-Shirt">Order on WhatsApp</a>
     </div>
   </div>
 
   <div class="product">
-    <img src="grey-hoodie.jpg" alt="Grey Hoodie">
+    <div class="product-image-wrapper">
+      <img src="grey-hoodie.jpg" alt="Grey Hoodie">
+      <div class="btn-overlay">
+        <a class="btn" href="https://wa.me/94725050456?text=Hi! I want to order the Grey Hoodie">Order on WhatsApp</a>
+      </div>
+    </div>
     <div class="product-info">
       <h3>Grey Hoodie</h3>
       <p class="price">Rs. 4500</p>
-      <a class="btn" href="https://wa.me/94725050456?text=Hi! I want to order the Grey Hoodie">Order on WhatsApp</a>
     </div>
   </div>
 </div>
