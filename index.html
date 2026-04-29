@@ -5,16 +5,11 @@
   <title>LINDI CLOTHING | Sustainable Style</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    body { 
-      font-family: 'Inter', sans-serif; 
-      margin: 0; 
-      background: #ffffff; 
-      color: #222; 
-      overflow-x: hidden;
-    }
+    body { font-family: 'Inter', sans-serif; margin: 0; background: #ffffff; color: #222; overflow-x: hidden; }
     
-    /* Navigation */
+    /* Responsive Nav */
     nav { 
       background: #f9f9f9; 
       padding: 15px 30px; 
@@ -27,67 +22,48 @@
       border-bottom: 1px solid #eee; 
     }
     .logo-container { display: flex; align-items: center; text-decoration: none; }
-    .logo-img { height: 45px; margin-right: 12px; }
-    .brand-name { font-size: 18px; letter-spacing: 4px; color: #333; font-weight: 500; text-transform: uppercase; }
-    nav a { color: #666; text-decoration: none; margin: 0 15px; font-size: 12px; letter-spacing: 1.5px; font-weight: 500; }
+    .logo-img { height: 40px; margin-right: 12px; }
+    .brand-name { font-size: 16px; letter-spacing: 4px; color: #333; font-weight: 500; text-transform: uppercase; }
+    nav a { color: #666; text-decoration: none; margin-left: 15px; font-size: 11px; letter-spacing: 1.5px; font-weight: 500; }
 
     /* Hero Section */
     .hero {
       position: relative;
-      height: 75vh;
+      height: 70vh;
       width: 100%;
-      background: url('hero.png') no-repeat center center;
+      background: url('hero.jpg') no-repeat center center;
       background-size: cover;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
     }
-    .hero::after {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.15);
-      z-index: 1;
-    }
-    .hero-content { position: relative; z-index: 2; color: white; }
-    .hero-content h1 { font-size: 32px; font-weight: 300; letter-spacing: 8px; text-transform: uppercase; margin-bottom: 25px; text-shadow: 0px 2px 10px rgba(0,0,0,0.2); }
-    
-    .hero-btn {
-      display: inline-block;
-      padding: 18px 45px;
-      background: #ffffff;
-      color: #333;
-      text-decoration: none;
-      font-size: 11px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      font-weight: 600;
-      transition: 0.3s;
-    }
-    .hero-btn:hover { background: #9BA88E; color: white; }
+    .hero::after { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.15); z-index: 1; }
+    .hero-content { position: relative; z-index: 2; color: white; padding: 0 20px; }
+    .hero-content h1 { font-size: 28px; font-weight: 300; letter-spacing: 6px; text-transform: uppercase; margin-bottom: 25px; }
+    .hero-btn { display: inline-block; padding: 15px 35px; background: #ffffff; color: #333; text-decoration: none; font-size: 10px; letter-spacing: 2px; font-weight: 600; text-transform: uppercase; }
 
-    /* The Three Pillars Section */
-    .pillars {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 50px;
-      padding: 100px 40px; /* Increased padding since statement is gone */
-      max-width: 1100px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    .pillar-item svg { width: 35px; height: 35px; margin-bottom: 20px; fill: #9BA88E; }
-    .pillar-item h3 { font-size: 14px; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; margin-bottom: 15px; color: #333; }
-    .pillar-item p { font-size: 14px; color: #888; font-weight: 300; line-height: 1.6; padding: 0 20px; }
+    /* Pillars Section */
+    .pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; padding: 80px 20px; max-width: 1100px; margin: 0 auto; text-align: center; }
+    .pillar-item svg { width: 30px; height: 30px; margin-bottom: 20px; fill: #9BA88E; }
+    .pillar-item h3 { font-size: 13px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; margin-bottom: 10px; }
+    .pillar-item p { font-size: 14px; color: #777; font-weight: 300; line-height: 1.6; }
 
-    /* Footer */
-    footer { background: #f9f9f9; text-align: center; padding: 60px 20px; font-size: 11px; color: #aaa; letter-spacing: 2px; border-top: 1px solid #eee; text-transform: uppercase; }
+    footer { background: #f9f9f9; text-align: center; padding: 40px 20px; font-size: 10px; color: #aaa; letter-spacing: 2px; border-top: 1px solid #eee; text-transform: uppercase; }
+
+    /* MOBILE ADJUSTMENTS */
+    @media (max-width: 768px) {
+      nav { flex-direction: column; padding: 15px; }
+      .logo-container { margin-bottom: 10px; }
+      nav div { display: flex; justify-content: center; width: 100%; }
+      nav a { margin: 0 10px; }
+      .hero { height: 60vh; }
+      .hero-content h1 { font-size: 22px; letter-spacing: 4px; }
+      .pillars { padding: 50px 20px; gap: 50px; }
+    }
   </style>
 </head>
 <body>
-
 <nav>
   <a href="index.html" class="logo-container">
     <img src="logo.png" alt="Lindi Logo" class="logo-img">
@@ -113,13 +89,11 @@
     <h3>Ethically Made</h3>
     <p>Every piece is handcrafted by local artisans in Sri Lanka with fair practices at the core.</p>
   </div>
-  
   <div class="pillar-item">
     <svg viewBox="0 0 24 24"><path d="M17,8C15.32,8 13.84,8.61 12.65,9.61C11.16,8.23 9.18,7.39 7,7.39C3.13,7.39 0,10.52 0,14.39C0,15.63 0.32,16.8 0.89,17.81L7.7,6.03L12.71,14.71L17,7.27L24,19.39L20.4,19.39L17,13.52L13.57,19.39L10.29,19.39L7,13.7L3.71,19.39L0.16,19.39C1.1,22.07 3.65,24 6.64,24C9.57,24 12.08,22.12 13.04,19.53C14,22.12 16.5,24 19.43,24C23.3,24 26.43,20.87 26.43,17C26.43,13.13 23.3,10 19.43,10C18.57,10 17.74,10.15 17,10.44V8Z"/></svg>
     <h3>Sustainable</h3>
     <p>We prioritize organic materials and small-batch production to reduce our footprint.</p>
   </div>
-
   <div class="pillar-item">
     <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M16.2,16.2L11,13V7H12.5V12.2L17,14.9L16.2,16.2Z"/></svg>
     <h3>Timeless</h3>
@@ -131,6 +105,5 @@
   <p>HANDCRAFTED | SUSTAINABLE | STYLE</p>
   <p>&copy; 2026 LINDI CLOTHING - MADE IN SRI LANKA</p>
 </footer>
-
 </body>
 </html>
