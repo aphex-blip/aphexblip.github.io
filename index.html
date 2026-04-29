@@ -30,7 +30,8 @@
       position: relative;
       height: 70vh;
       width: 100%;
-      background: url('hero.jpg') no-repeat center center;
+      /* CHANGE 3: Switched from jpg to png */
+      background: url('hero.png') no-repeat center center;
       background-size: cover;
       display: flex;
       justify-content: center;
@@ -46,13 +47,36 @@
     .hot-picks-section { padding: 80px 0; background: #fff; overflow: hidden; }
     .section-title { text-align: center; font-size: 12px; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 40px; color: #9BA88E; font-weight: 600; }
 
-    .marquee-container { display: flex; width: 200%; animation: scroll 25s linear infinite; }
-    .marquee-container:hover { animation-play-state: paused; } /* Stops scrolling when user hovers */
+    .marquee-container { display: flex; width: 200%; animation: scroll 30s linear infinite; } /* Slower scroll for cleaner look */
+    .marquee-container:hover { animation-play-state: paused; } 
 
-    .hot-pick-card { width: 250px; margin: 0 20px; text-align: center; flex-shrink: 0; text-decoration: none; color: inherit; }
-    .hot-pick-image { width: 100%; aspect-ratio: 3/4; object-fit: cover; background: #f9f9f9; margin-bottom: 15px; }
-    .hot-pick-card h3 { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; margin: 0; font-weight: 500; }
-    .hot-pick-card p { font-size: 11px; color: #888; margin-top: 5px; }
+    .hot-pick-card { 
+      width: 250px; 
+      margin: 0 20px; 
+      position: relative; /* Required for ribbon positioning */
+      flex-shrink: 0; 
+      overflow: hidden; /* Keeps ribbon inside card */
+    }
+    .hot-pick-image { width: 100%; aspect-ratio: 3/4; object-fit: cover; background: #f9f9f9; display: block; }
+    
+    /* CHANGE 1: Title/Price text removed from HTML (see below) */
+
+    /* CHANGE 2: Red Ribbon CSS */
+    .ribbon {
+      position: absolute;
+      top: 15px;
+      right: -30px; /* Positions it partially off-screen for diagonal look */
+      background: #c62828; /* Deep red */
+      color: white;
+      text-transform: uppercase;
+      font-size: 8px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      padding: 5px 30px;
+      transform: rotate(45deg); /* Slants it */
+      z-index: 5;
+      box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+    }
 
     @keyframes scroll {
       0% { transform: translateX(0); }
@@ -72,7 +96,7 @@
       .logo-container { margin-bottom: 10px; }
       .hero { height: 50vh; }
       .hot-picks-section { padding: 50px 0; }
-      .marquee-container { animation: scroll 15s linear infinite; } /* Faster scroll for smaller screens */
+      .marquee-container { animation: scroll 20s linear infinite; } 
     }
   </style>
 </head>
@@ -101,44 +125,28 @@
   <div class="section-title">Hot Picks</div>
   <div class="marquee-container">
     <a href="shop.html" class="hot-pick-card">
-      <img src="grey-hoodie.jpg" alt="Grey Hoodie" class="hot-pick-image">
-      <h3>Grey Hoodie</h3>
-      <p>Rs. 4500</p>
+      <span class="ribbon">Hot</span> <img src="grey-hoodie.jpg" alt="Grey Hoodie" class="hot-pick-image">
     </a>
     <a href="shop.html" class="hot-pick-card">
-      <img src="black-t-shirt.jpg" alt="Black Tee" class="hot-pick-image">
-      <h3>Black Tee</h3>
-      <p>Rs. 2500</p>
+      <span class="ribbon">Hot</span> <img src="black-t-shirt.jpg" alt="Black Tee" class="hot-pick-image">
     </a>
     <a href="shop.html" class="hot-pick-card">
-      <img src="product3.jpg" alt="Signature Tee" class="hot-pick-image">
-      <h3>Signature Tee</h3>
-      <p>Rs. 2800</p>
+      <span class="ribbon">Hot</span> <img src="product3.jpg" alt="Signature Tee" class="hot-pick-image">
     </a>
     <a href="shop.html" class="hot-pick-card">
-      <img src="product4.jpg" alt="Lindi Hoodie" class="hot-pick-image">
-      <h3>Lindi Hoodie</h3>
-      <p>Rs. 4800</p>
+      <span class="ribbon">Hot</span> <img src="product4.jpg" alt="Lindi Hoodie" class="hot-pick-image">
     </a>
     <a href="shop.html" class="hot-pick-card">
-      <img src="grey-hoodie.jpg" alt="Grey Hoodie" class="hot-pick-image">
-      <h3>Grey Hoodie</h3>
-      <p>Rs. 4500</p>
+      <span class="ribbon">Hot</span> <img src="grey-hoodie.jpg" alt="Grey Hoodie" class="hot-pick-image">
     </a>
     <a href="shop.html" class="hot-pick-card">
-      <img src="black-t-shirt.jpg" alt="Black Tee" class="hot-pick-image">
-      <h3>Black Tee</h3>
-      <p>Rs. 2500</p>
+      <span class="ribbon">Hot</span> <img src="black-t-shirt.jpg" alt="Black Tee" class="hot-pick-image">
     </a>
     <a href="shop.html" class="hot-pick-card">
-      <img src="product3.jpg" alt="Signature Tee" class="hot-pick-image">
-      <h3>Signature Tee</h3>
-      <p>Rs. 2800</p>
+      <span class="ribbon">Hot</span> <img src="product3.jpg" alt="Signature Tee" class="hot-pick-image">
     </a>
     <a href="shop.html" class="hot-pick-card">
-      <img src="product4.jpg" alt="Lindi Hoodie" class="hot-pick-image">
-      <h3>Lindi Hoodie</h3>
-      <p>Rs. 4800</p>
+      <span class="ribbon">Hot</span> <img src="product4.jpg" alt="Lindi Hoodie" class="hot-pick-image">
     </a>
   </div>
 </section>
