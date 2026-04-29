@@ -8,95 +8,54 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Inter', sans-serif; margin: 0; background: #ffffff; color: #222; }
-    
-    nav { background: #f9f9f9; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #eee; }
+    nav { background: #f9f9f9; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; position: sticky; top:0; z-index: 100; }
     .logo-container { display: flex; align-items: center; text-decoration: none; }
-    .logo-img { height: 45px; margin-right: 12px; }
-    .brand-name { font-size: 18px; letter-spacing: 4px; color: #333; font-weight: 500; text-transform: uppercase; }
-    nav a { color: #666; text-decoration: none; margin: 0 15px; font-size: 12px; letter-spacing: 1.5px; font-weight: 500; }
+    .logo-img { height: 40px; margin-right: 12px; }
+    .brand-name { font-size: 16px; letter-spacing: 4px; color: #333; font-weight: 500; text-transform: uppercase; }
+    nav a { color: #666; text-decoration: none; margin-left: 15px; font-size: 11px; letter-spacing: 1.5px; font-weight: 500; }
 
-    .shop-header { text-align: center; padding: 60px 0 20px 0; text-transform: uppercase; letter-spacing: 6px; font-weight: 300; font-size: 12px; }
-
-    /* Updated Grid for 4-5 Items */
-    .container { 
-      display: grid; 
-      /* minmax(220px) allows 4-5 items to fit on desktop while staying responsive */
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
-      gap: 30px; 
-      padding: 20px; 
-      max-width: 1400px; /* Widened to support more items per row */
-      margin: auto; 
-    }
+    .shop-header { text-align: center; padding: 60px 0 20px 0; text-transform: uppercase; letter-spacing: 6px; font-size: 12px; }
     
-    .product { position: relative; text-align: center; overflow: hidden; }
+    /* Grid Adjustments */
+    .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; padding: 15px; max-width: 1400px; margin: auto; }
+    .product { position: relative; text-align: center; overflow: hidden; margin-bottom: 20px; }
+    .product-image-wrapper { position: relative; width: 100%; aspect-ratio: 3 / 4; overflow: hidden; background: #fdfdfd; }
+    .product img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
 
-    /* Image Consistency (Portrait 3:4 Ratio) */
-    .product-image-wrapper { 
-      position: relative;
-      width: 100%;
-      aspect-ratio: 3 / 4; 
-      overflow: hidden;
-      background: #fdfdfd;
-    }
-    
-    .product img { 
-      width: 100%; 
-      height: 100%; 
-      object-fit: cover; 
-      transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
-    }
-
+    /* Desktop Hover */
+    .btn-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; opacity: 0; transition: 0.3s; z-index: 10; }
+    .btn { padding: 12px 20px; background: #333; color: white; text-decoration: none; font-size: 9px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; }
+    .product:hover .btn-overlay { opacity: 1; }
     .product:hover img { transform: scale(1.05); }
 
-    .product-info { padding: 15px 0; }
-    .product-info h3 { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 5px 0; }
-    .price { font-size: 12px; color: #888; font-weight: 300; }
+    .product-info { padding: 12px 0; }
+    .product-info h3 { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+    .price { font-size: 12px; color: #888; }
 
-    /* Ghost Hover Button */
-    .btn-overlay {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(255,255,255,0.05); 
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0; 
-      transition: opacity 0.4s ease;
-      z-index: 10;
+    footer { background: #f9f9f9; text-align: center; padding: 40px 20px; font-size: 10px; color: #aaa; border-top: 1px solid #eee; text-transform: uppercase; }
+
+    /* MOBILE OVERRIDES */
+    @media (max-width: 768px) {
+      nav { flex-direction: column; padding: 15px; }
+      .logo-container { margin-bottom: 10px; }
+      nav div { display: flex; justify-content: center; width: 100%; }
+      nav a { margin: 0 10px; }
+      
+      .container { grid-template-columns: repeat(2, 1fr); gap: 15px; } /* 2 per row on mobile */
+      
+      /* Make button always visible on mobile since there is no hover */
+      .btn-overlay { opacity: 1; position: relative; background: none; margin-top: 10px; }
+      .btn { display: block; width: 100%; box-sizing: border-box; padding: 10px; background: #9BA88E; }
     }
-
-    .btn { 
-      padding: 12px 20px; 
-      background: #333; 
-      color: white; 
-      text-decoration: none; 
-      font-size: 9px; 
-      text-transform: uppercase; 
-      letter-spacing: 1.5px; 
-      font-weight: 600;
-      transform: translateY(15px); 
-      transition: all 0.4s ease;
-    }
-
-    .product:hover .btn-overlay { opacity: 1; }
-    .product:hover .btn { transform: translateY(0); }
-    .btn:hover { background: #9BA88E; }
-
-    footer { background: #f9f9f9; text-align: center; padding: 60px 20px; font-size: 11px; color: #aaa; letter-spacing: 2px; border-top: 1px solid #eee; text-transform: uppercase; }
   </style>
 </head>
 <body>
-
 <nav>
   <a href="index.html" class="logo-container">
     <img src="logo.png" alt="Lindi Logo" class="logo-img">
     <span class="brand-name">LINDI</span>
   </a>
-  <div>
-    <a href="index.html">HOME</a>
-    <a href="shop.html">SHOP</a>
-    <a href="about.html">ABOUT</a>
-  </div>
+  <div><a href="index.html">HOME</a><a href="shop.html">SHOP</a><a href="about.html">ABOUT</a></div>
 </nav>
 
 <div class="shop-header"><h1>Our Collection</h1></div>
@@ -105,48 +64,20 @@
   <div class="product">
     <div class="product-image-wrapper">
       <img src="black-t-shirt.jpg" alt="Black T-shirt">
-      <div class="btn-overlay"><a class="btn" href="https://wa.me/94725050456?text=Hi! I want to order the Black T-Shirt">Order on WhatsApp</a></div>
+      <div class="btn-overlay"><a class="btn" href="https://wa.me/94725050456?text=Order: Black Tee">Order Now</a></div>
     </div>
     <div class="product-info"><h3>Black T-Shirt</h3><p class="price">Rs. 2500</p></div>
   </div>
-
+  
   <div class="product">
     <div class="product-image-wrapper">
       <img src="grey-hoodie.jpg" alt="Grey Hoodie">
-      <div class="btn-overlay"><a class="btn" href="https://wa.me/94725050456?text=Hi! I want to order the Grey Hoodie">Order on WhatsApp</a></div>
+      <div class="btn-overlay"><a class="btn" href="https://wa.me/94725050456?text=Order: Grey Hoodie">Order Now</a></div>
     </div>
     <div class="product-info"><h3>Grey Hoodie</h3><p class="price">Rs. 4500</p></div>
   </div>
-
-  <div class="product">
-    <div class="product-image-wrapper">
-      <img src="product3.jpg" alt="Product 3">
-      <div class="btn-overlay"><a class="btn" href="https://wa.me/94725050456?text=Hi! I want to order Product 3">Order on WhatsApp</a></div>
-    </div>
-    <div class="product-info"><h3>Signature Tee</h3><p class="price">Rs. 2800</p></div>
-  </div>
-
-  <div class="product">
-    <div class="product-image-wrapper">
-      <img src="product4.jpg" alt="Product 4">
-      <div class="btn-overlay"><a class="btn" href="https://wa.me/94725050456?text=Hi! I want to order Product 4">Order on WhatsApp</a></div>
-    </div>
-    <div class="product-info"><h3>Lindi Hoodie</h3><p class="price">Rs. 4800</p></div>
-  </div>
-
-  <div class="product">
-    <div class="product-image-wrapper">
-      <img src="product5.jpg" alt="Product 5">
-      <div class="btn-overlay"><a class="btn" href="https://wa.me/94725050456?text=Hi! I want to order Product 5">Order on WhatsApp</a></div>
-    </div>
-    <div class="product-info"><h3>Classic Joggers</h3><p class="price">Rs. 3500</p></div>
-  </div>
 </div>
 
-<footer>
-  <p>HANDCRAFTED | SUSTAINABLE | STYLE</p>
-  <p>&copy; 2026 LINDI CLOTHING - MADE IN SRI LANKA</p>
-</footer>
-
+<footer><p>&copy; 2026 LINDI CLOTHING</p></footer>
 </body>
 </html>
