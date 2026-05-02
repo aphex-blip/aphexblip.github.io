@@ -157,19 +157,18 @@
   </div>
 </section>
 
-<!-- HOT PICKS MARQUEE SECTION -->
+<!-- HOT PICKS SECTION -->
 <section class="hot-picks-section">
   <div class="section-title">Hot Picks</div>
   
   <div class="scroll-wrapper">
-    <!-- Manual Navigation Buttons -->
     <button class="nav-btn prev-btn" onclick="manualScroll(-1)">
       <svg viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/></svg>
     </button>
 
-    <!-- The actual marquee container -->
+    <!-- We removed the CSS animation from here to stop the "fighting" -->
     <div class="scroll-container" id="marquee">
-      <!-- SET 1 -->
+      <!-- Original Set -->
       <a href="https://wa.me/94725050456?text=Hi! I'm interested in the Grey Hoodie" class="hot-pick-card">
         <span class="ribbon">Hot</span> <img src="grey-hoodie.jpg" alt="Grey Hoodie" class="hot-pick-image">
       </a>
@@ -179,11 +178,8 @@
       <a href="https://wa.me/94725050456?text=Hi! I'm interested in the Signature Tee" class="hot-pick-card">
         <span class="ribbon">Hot</span> <img src="product3.jpg" alt="Signature Tee" class="hot-pick-image">
       </a>
-      <a href="https://wa.me/94725050456?text=Hi! I'm interested in the Lindi Hoodie" class="hot-pick-card">
-        <span class="ribbon">Hot</span> <img src="product4.jpg" alt="Lindi Hoodie" class="hot-pick-image">
-      </a>
-
-      <!-- SET 2 (Duplicate for seamless loop) -->
+      
+      <!-- Duplicate Set for the Infinite Look -->
       <a href="https://wa.me/94725050456?text=Hi! I'm interested in the Grey Hoodie" class="hot-pick-card">
         <span class="ribbon">Hot</span> <img src="grey-hoodie.jpg" alt="Grey Hoodie" class="hot-pick-image">
       </a>
@@ -192,9 +188,6 @@
       </a>
       <a href="https://wa.me/94725050456?text=Hi! I'm interested in the Signature Tee" class="hot-pick-card">
         <span class="ribbon">Hot</span> <img src="product3.jpg" alt="Signature Tee" class="hot-pick-image">
-      </a>
-      <a href="https://wa.me/94725050456?text=Hi! I'm interested in the Lindi Hoodie" class="hot-pick-card">
-        <span class="ribbon">Hot</span> <img src="product4.jpg" alt="Lindi Hoodie" class="hot-pick-image">
       </a>
     </div>
 
@@ -203,6 +196,38 @@
     </button>
   </div>
 </section>
+
+<script>
+  const marquee = document.getElementById('marquee');
+  let isPaused = false;
+
+  // 1. THE AUTO-MARQUEE LOGIC
+  function autoScroll() {
+    if (!isPaused) {
+      marquee.scrollLeft += 1; // Movement speed
+      // If we've scrolled halfway (the end of the first set), reset to start seamlessly
+      if (marquee.scrollLeft >= marquee.scrollWidth / 2) {
+        marquee.scrollLeft = 0;
+      }
+    }
+  }
+
+  // Run the scroll every 20 milliseconds
+  let scrollInterval = setInterval(autoScroll, 20);
+
+  // 2. PAUSE ON HOVER
+  marquee.addEventListener('mouseenter', () => isPaused = true);
+  marquee.addEventListener('mouseleave', () => isPaused = false);
+
+  // 3. MANUAL BUTTONS
+  function manualScroll(direction) {
+    const scrollAmount = 310; // Card width + gap
+    marquee.scrollBy({
+      left: direction * scrollAmount,
+      behavior: 'smooth'
+    });
+  }
+</script>
 
 <section class="pillars">
   <div class="pillar-item">
