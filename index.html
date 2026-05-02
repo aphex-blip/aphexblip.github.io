@@ -42,27 +42,29 @@
     .hero-content h1 { font-size: 28px; font-weight: 300; letter-spacing: 6px; text-transform: uppercase; margin-bottom: 25px; }
     .hero-btn { display: inline-block; padding: 15px 35px; background: #ffffff; color: #333; text-decoration: none; font-size: 10px; letter-spacing: 2px; font-weight: 600; text-transform: uppercase; }
 
-    /* --- UPDATED HOT PICKS SECTION (Manual Scroll) --- */
+    /* --- HOT PICKS SECTION (Centered + Manual Scroll) --- */
     .hot-picks-section { padding: 80px 0; background: #fff; }
     .section-title { text-align: center; font-size: 12px; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 40px; color: #9BA88E; font-weight: 600; }
 
     .scroll-container { 
       display: flex; 
-      overflow-x: auto; /* Enables horizontal scroll */
-      scroll-snap-type: x mandatory; /* Makes items snap into place */
+      overflow-x: auto; 
+      scroll-snap-type: x mandatory; 
       padding: 20px 30px;
-      gap: 20px;
-      -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-      scrollbar-width: none; /* Hides scrollbar on Firefox */
+      gap: 30px;
+      /* NEW: Centers items if they fit, starts at the beginning if they overflow */
+      justify-content: safe center; 
+      -webkit-overflow-scrolling: touch; 
+      scrollbar-width: none; 
     }
-    .scroll-container::-webkit-scrollbar { display: none; } /* Hides scrollbar on Chrome/Safari */
+    .scroll-container::-webkit-scrollbar { display: none; }
 
     .hot-pick-card { 
       width: 280px; 
       position: relative; 
       flex-shrink: 0; 
       overflow: hidden; 
-      scroll-snap-align: center; /* Snap point */
+      scroll-snap-align: center; 
       cursor: pointer;
       transition: transform 0.3s ease;
     }
@@ -97,7 +99,9 @@
       nav { flex-direction: column; padding: 15px; }
       .logo-container { margin-bottom: 10px; }
       .hero { height: 50vh; }
-      .hot-pick-card { width: 220px; } /* Slightly smaller on mobile */
+      .hot-pick-card { width: 220px; }
+      /* On mobile, we align to start so user can clearly see there is more to scroll */
+      .scroll-container { justify-content: flex-start; padding: 20px; }
     }
   </style>
 </head>
@@ -122,27 +126,26 @@
   </div>
 </section>
 
-<!-- HOT PICKS SECTION (Horizontal Scroll) -->
+<!-- HOT PICKS SECTION (Centered + Horizontal Scroll) -->
 <section class="hot-picks-section">
   <div class="section-title">Hot Picks</div>
   <div class="scroll-container">
-    <!-- Links now go directly to WhatsApp -->
-    <a href="https://wa.me/94725050456?text=Hi! I'm interested in the Grey Hoodie from Hot Picks" class="hot-pick-card">
+    <a href="https://wa.me/94725050456?text=Hi! I'm interested in the Grey Hoodie" class="hot-pick-card">
       <span class="ribbon">Hot</span> 
       <img src="grey-hoodie.jpg" alt="Grey Hoodie" class="hot-pick-image">
     </a>
 
-    <a href="https://wa.me/94725050456?text=Hi! I'm interested in the Black Tee from Hot Picks" class="hot-pick-card">
+    <a href="https://wa.me/94725050456?text=Hi! I'm interested in the Black Tee" class="hot-pick-card">
       <span class="ribbon">Hot</span> 
       <img src="black-t-shirt.jpg" alt="Black Tee" class="hot-pick-image">
     </a>
 
-    <a href="https://wa.me/94725050456?text=Hi! I'm interested in the Signature Tee from Hot Picks" class="hot-pick-card">
+    <a href="https://wa.me/94725050456?text=Hi! I'm interested in the Signature Tee" class="hot-pick-card">
       <span class="ribbon">Hot</span> 
       <img src="product3.jpg" alt="Signature Tee" class="hot-pick-image">
     </a>
 
-    <a href="https://wa.me/94725050456?text=Hi! I'm interested in the Lindi Hoodie from Hot Picks" class="hot-pick-card">
+    <a href="https://wa.me/94725050456?text=Hi! I'm interested in the Lindi Hoodie" class="hot-pick-card">
       <span class="ribbon">Hot</span> 
       <img src="product4.jpg" alt="Lindi Hoodie" class="hot-pick-image">
     </a>
