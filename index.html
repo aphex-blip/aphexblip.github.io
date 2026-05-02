@@ -30,7 +30,6 @@
       position: relative;
       height: 70vh;
       width: 100%;
-      /* CHANGE 3: Switched from jpg to png */
       background: url('hero.png') no-repeat center center;
       background-size: cover;
       display: flex;
@@ -43,44 +42,47 @@
     .hero-content h1 { font-size: 28px; font-weight: 300; letter-spacing: 6px; text-transform: uppercase; margin-bottom: 25px; }
     .hero-btn { display: inline-block; padding: 15px 35px; background: #ffffff; color: #333; text-decoration: none; font-size: 10px; letter-spacing: 2px; font-weight: 600; text-transform: uppercase; }
 
-    /* --- HOT PICKS SECTION --- */
-    .hot-picks-section { padding: 80px 0; background: #fff; overflow: hidden; }
+    /* --- UPDATED HOT PICKS SECTION (Manual Scroll) --- */
+    .hot-picks-section { padding: 80px 0; background: #fff; }
     .section-title { text-align: center; font-size: 12px; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 40px; color: #9BA88E; font-weight: 600; }
 
-    .marquee-container { display: flex; width: 200%; animation: scroll 30s linear infinite; } /* Slower scroll for cleaner look */
-    .marquee-container:hover { animation-play-state: paused; } 
+    .scroll-container { 
+      display: flex; 
+      overflow-x: auto; /* Enables horizontal scroll */
+      scroll-snap-type: x mandatory; /* Makes items snap into place */
+      padding: 20px 30px;
+      gap: 20px;
+      -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+      scrollbar-width: none; /* Hides scrollbar on Firefox */
+    }
+    .scroll-container::-webkit-scrollbar { display: none; } /* Hides scrollbar on Chrome/Safari */
 
     .hot-pick-card { 
-      width: 250px; 
-      margin: 0 20px; 
-      position: relative; /* Required for ribbon positioning */
+      width: 280px; 
+      position: relative; 
       flex-shrink: 0; 
-      overflow: hidden; /* Keeps ribbon inside card */
+      overflow: hidden; 
+      scroll-snap-align: center; /* Snap point */
+      cursor: pointer;
+      transition: transform 0.3s ease;
     }
-    .hot-pick-image { width: 100%; aspect-ratio: 3/4; object-fit: cover; background: #f9f9f9; display: block; }
+    .hot-pick-card:hover { transform: translateY(-5px); }
+    .hot-pick-image { width: 100%; aspect-ratio: 3/4; object-fit: cover; background: #f9f9f9; display: block; border-radius: 4px; }
     
-    /* CHANGE 1: Title/Price text removed from HTML (see below) */
-
-    /* CHANGE 2: Red Ribbon CSS */
     .ribbon {
       position: absolute;
       top: 15px;
-      right: -30px; /* Positions it partially off-screen for diagonal look */
-      background: #c62828; /* Deep red */
+      right: -30px; 
+      background: #c62828; 
       color: white;
       text-transform: uppercase;
       font-size: 8px;
       font-weight: 600;
       letter-spacing: 2px;
       padding: 5px 30px;
-      transform: rotate(45deg); /* Slants it */
+      transform: rotate(45deg); 
       z-index: 5;
       box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
-    }
-
-    @keyframes scroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
     }
 
     /* --- PILLARS SECTION --- */
@@ -95,8 +97,7 @@
       nav { flex-direction: column; padding: 15px; }
       .logo-container { margin-bottom: 10px; }
       .hero { height: 50vh; }
-      .hot-picks-section { padding: 50px 0; }
-      .marquee-container { animation: scroll 20s linear infinite; } 
+      .hot-pick-card { width: 220px; } /* Slightly smaller on mobile */
     }
   </style>
 </head>
@@ -121,32 +122,29 @@
   </div>
 </section>
 
+<!-- HOT PICKS SECTION (Horizontal Scroll) -->
 <section class="hot-picks-section">
   <div class="section-title">Hot Picks</div>
-  <div class="marquee-container">
-    <a href="shop.html" class="hot-pick-card">
-      <span class="ribbon">Hot</span> <img src="grey-hoodie.jpg" alt="Grey Hoodie" class="hot-pick-image">
+  <div class="scroll-container">
+    <!-- Links now go directly to WhatsApp -->
+    <a href="https://wa.me/94725050456?text=Hi! I'm interested in the Grey Hoodie from Hot Picks" class="hot-pick-card">
+      <span class="ribbon">Hot</span> 
+      <img src="grey-hoodie.jpg" alt="Grey Hoodie" class="hot-pick-image">
     </a>
-    <a href="shop.html" class="hot-pick-card">
-      <span class="ribbon">Hot</span> <img src="black-t-shirt.jpg" alt="Black Tee" class="hot-pick-image">
+
+    <a href="https://wa.me/94725050456?text=Hi! I'm interested in the Black Tee from Hot Picks" class="hot-pick-card">
+      <span class="ribbon">Hot</span> 
+      <img src="black-t-shirt.jpg" alt="Black Tee" class="hot-pick-image">
     </a>
-    <a href="shop.html" class="hot-pick-card">
-      <span class="ribbon">Hot</span> <img src="product3.jpg" alt="Signature Tee" class="hot-pick-image">
+
+    <a href="https://wa.me/94725050456?text=Hi! I'm interested in the Signature Tee from Hot Picks" class="hot-pick-card">
+      <span class="ribbon">Hot</span> 
+      <img src="product3.jpg" alt="Signature Tee" class="hot-pick-image">
     </a>
-    <a href="shop.html" class="hot-pick-card">
-      <span class="ribbon">Hot</span> <img src="product4.jpg" alt="Lindi Hoodie" class="hot-pick-image">
-    </a>
-    <a href="shop.html" class="hot-pick-card">
-      <span class="ribbon">Hot</span> <img src="grey-hoodie.jpg" alt="Grey Hoodie" class="hot-pick-image">
-    </a>
-    <a href="shop.html" class="hot-pick-card">
-      <span class="ribbon">Hot</span> <img src="black-t-shirt.jpg" alt="Black Tee" class="hot-pick-image">
-    </a>
-    <a href="shop.html" class="hot-pick-card">
-      <span class="ribbon">Hot</span> <img src="product3.jpg" alt="Signature Tee" class="hot-pick-image">
-    </a>
-    <a href="shop.html" class="hot-pick-card">
-      <span class="ribbon">Hot</span> <img src="product4.jpg" alt="Lindi Hoodie" class="hot-pick-image">
+
+    <a href="https://wa.me/94725050456?text=Hi! I'm interested in the Lindi Hoodie from Hot Picks" class="hot-pick-card">
+      <span class="ribbon">Hot</span> 
+      <img src="product4.jpg" alt="Lindi Hoodie" class="hot-pick-image">
     </a>
   </div>
 </section>
