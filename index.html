@@ -1,118 +1,241 @@
-<style>
-    /* --- HOT PICKS UPDATED CSS --- */
-    .hot-picks-section { padding: 80px 0; background: #fff; overflow: hidden; position: relative; }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LINDI CLOTHING | Sustainable Style</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; margin: 0; background: #ffffff; color: #222; overflow-x: hidden; }
+    
+    nav { 
+      background: #f9f9f9; 
+      padding: 15px 30px; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      position: sticky; 
+      top: 0; 
+      z-index: 100; 
+      border-bottom: 1px solid #eee; 
+    }
+    .logo-container { display: flex; align-items: center; text-decoration: none; }
+    .logo-img { height: 40px; margin-right: 12px; }
+    .brand-name { font-size: 16px; letter-spacing: 4px; color: #333; font-weight: 500; text-transform: uppercase; }
+    nav div { display: flex; }
+    nav a { color: #666; text-decoration: none; margin-left: 15px; font-size: 11px; letter-spacing: 1.5px; font-weight: 500; }
+
+    .hero {
+      position: relative;
+      height: 70vh;
+      width: 100%;
+      background: url('hero.png') no-repeat center center;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .hero::after { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.15); z-index: 1; }
+    .hero-content { position: relative; z-index: 2; color: white; padding: 0 20px; }
+    .hero-content h1 { font-size: 28px; font-weight: 300; letter-spacing: 6px; text-transform: uppercase; margin-bottom: 25px; }
+    .hero-btn { display: inline-block; padding: 15px 35px; background: #ffffff; color: #333; text-decoration: none; font-size: 10px; letter-spacing: 2px; font-weight: 600; text-transform: uppercase; }
+
+    /* --- HOT PICKS SECTION --- */
+    .hot-picks-section { padding: 80px 0; background: #fff; position: relative; }
     .section-title { text-align: center; font-size: 12px; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 40px; color: #9BA88E; font-weight: 600; }
 
-    .scroll-wrapper { position: relative; width: 100%; display: flex; align-items: center; }
+    /* The Wrapper allows us to position buttons relative to the list */
+    .scroll-wrapper { position: relative; max-width: 1400px; margin: 0 auto; padding: 0 60px; }
 
     .scroll-container { 
       display: flex; 
-      gap: 30px;
+      overflow-x: auto; 
+      scroll-snap-type: x mandatory; 
       padding: 20px 0;
-      /* IMPORTANT: We use hidden to let JS handle the movement exclusively */
-      overflow-x: hidden; 
-      white-space: nowrap;
-      width: 100%;
-      scroll-behavior: smooth;
+      gap: 30px;
+      justify-content: safe center; 
+      -webkit-overflow-scrolling: touch; 
+      scrollbar-width: none; 
+      scroll-behavior: smooth; /* Smooth movement when clicking buttons */
     }
+    .scroll-container::-webkit-scrollbar { display: none; }
 
     .hot-pick-card { 
       width: 280px; 
       position: relative; 
       flex-shrink: 0; 
-      display: inline-block;
-      text-decoration: none;
+      overflow: hidden; 
+      scroll-snap-align: center; 
+      cursor: pointer;
       transition: transform 0.3s ease;
     }
     .hot-pick-card:hover { transform: translateY(-5px); }
-    .hot-pick-image { width: 100%; aspect-ratio: 3/4; object-fit: cover; background: #f9f9f9; border-radius: 4px; display: block; }
+    .hot-pick-image { width: 100%; aspect-ratio: 3/4; object-fit: cover; background: #f9f9f9; display: block; border-radius: 4px; }
     
+    .ribbon {
+      position: absolute;
+      top: 15px;
+      right: -30px; 
+      background: #c62828; 
+      color: white;
+      text-transform: uppercase;
+      font-size: 8px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      padding: 5px 30px;
+      transform: rotate(45deg); 
+      z-index: 5;
+    }
+
+    /* --- SCROLL BUTTONS --- */
     .nav-btn {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
       width: 45px;
       height: 45px;
-      background: white;
+      background: #fff;
       border: 1px solid #eee;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      z-index: 100;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      z-index: 10;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
-    .prev-btn { left: 20px; }
-    .next-btn { right: 20px; }
-    .nav-btn svg { width: 20px; fill: #333; }
-</style>
+    .nav-btn:hover { background: #9BA88E; border-color: #9BA88E; }
+    .nav-btn:hover svg { fill: #fff; }
+    .nav-btn svg { width: 18px; height: 18px; fill: #333; transition: fill 0.3s ease; }
+    
+    .prev-btn { left: 10px; }
+    .next-btn { right: 10px; }
 
-<!-- HOT PICKS HTML -->
+    /* --- PILLARS SECTION --- */
+    .pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; padding: 80px 20px; max-width: 1100px; margin: 0 auto; text-align: center; border-top: 1px solid #f2f2f2; }
+    .pillar-item svg { width: 30px; height: 30px; margin-bottom: 20px; fill: #9BA88E; }
+    .pillar-item h3 { font-size: 13px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; margin-bottom: 10px; }
+    .pillar-item p { font-size: 14px; color: #777; font-weight: 300; line-height: 1.6; }
+
+    footer { background: #f9f9f9; text-align: center; padding: 40px 20px; font-size: 10px; color: #aaa; letter-spacing: 2px; border-top: 1px solid #eee; text-transform: uppercase; }
+
+    @media (max-width: 768px) {
+      .nav-btn { display: none; } /* Hide buttons on mobile */
+      .scroll-wrapper { padding: 0; }
+      .scroll-container { justify-content: flex-start; padding: 20px; }
+      .hot-pick-card { width: 220px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo-container">
+    <img src="logo.png" alt="Lindi Logo" class="logo-img">
+    <span class="brand-name">LINDI</span>
+  </a>
+  <div>
+    <a href="index.html">HOME</a>
+    <a href="shop.html">SHOP</a>
+    <a href="about.html">ABOUT</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Handcrafted Style</h1>
+    <a href="shop.html" class="hero-btn">Explore Collection</a>
+  </div>
+</section>
+
+<!-- HOT PICKS SECTION -->
 <section class="hot-picks-section">
   <div class="section-title">Hot Picks</div>
+  
   <div class="scroll-wrapper">
-    <button class="nav-btn prev-btn" id="prevBtn">
+    <!-- Left Button -->
+    <button class="nav-btn prev-btn" onclick="scrollPicks(-1)">
       <svg viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/></svg>
     </button>
 
-    <div class="scroll-container" id="marquee">
-      <!-- SET 1 -->
-      <a href="https://wa.me/94725050456?text=Grey Hoodie" class="hot-pick-card">
+    <div class="scroll-container" id="hotPicksContainer">
+      <!-- Products -->
+      <a href="https://wa.me/94725050456?text=Hi! I'm interested in the Grey Hoodie" class="hot-pick-card">
+        <span class="ribbon">Hot</span> 
         <img src="grey-hoodie.jpg" alt="Grey Hoodie" class="hot-pick-image">
       </a>
-      <a href="https://wa.me/94725050456?text=Black Tee" class="hot-pick-card">
+
+      <a href="https://wa.me/94725050456?text=Hi! I'm interested in the Black Tee" class="hot-pick-card">
+        <span class="ribbon">Hot</span> 
         <img src="black-t-shirt.jpg" alt="Black Tee" class="hot-pick-image">
       </a>
-      <a href="https://wa.me/94725050456?text=Signature Tee" class="hot-pick-card">
+
+      <a href="https://wa.me/94725050456?text=Hi! I'm interested in the Signature Tee" class="hot-pick-card">
+        <span class="ribbon">Hot</span> 
         <img src="product3.jpg" alt="Signature Tee" class="hot-pick-image">
       </a>
-      <!-- SET 2 (Duplicates) -->
-      <a href="https://wa.me/94725050456?text=Grey Hoodie" class="hot-pick-card">
+
+      <a href="https://wa.me/94725050456?text=Hi! I'm interested in the Lindi Hoodie" class="hot-pick-card">
+        <span class="ribbon">Hot</span> 
+        <img src="product4.jpg" alt="Lindi Hoodie" class="hot-pick-image">
+      </a>
+
+      <a href="https://wa.me/94725050456?text=Hi! I'm interested in the Grey Hoodie" class="hot-pick-card">
+        <span class="ribbon">Hot</span> 
         <img src="grey-hoodie.jpg" alt="Grey Hoodie" class="hot-pick-image">
       </a>
-      <a href="https://wa.me/94725050456?text=Black Tee" class="hot-pick-card">
+
+      <a href="https://wa.me/94725050456?text=Hi! I'm interested in the Black Tee" class="hot-pick-card">
+        <span class="ribbon">Hot</span> 
         <img src="black-t-shirt.jpg" alt="Black Tee" class="hot-pick-image">
-      </a>
-      <a href="https://wa.me/94725050456?text=Signature Tee" class="hot-pick-card">
-        <img src="product3.jpg" alt="Signature Tee" class="hot-pick-image">
       </a>
     </div>
 
-    <button class="nav-btn next-btn" id="nextBtn">
+    <!-- Right Button -->
+    <button class="nav-btn next-btn" onclick="scrollPicks(1)">
       <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
     </button>
   </div>
 </section>
 
+<section class="pillars">
+  <!-- (Pillars content remains same) -->
+  <div class="pillar-item">
+    <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+    <h3>Ethically Made</h3>
+    <p>Every piece is handcrafted by local artisans in Sri Lanka.</p>
+  </div>
+  <div class="pillar-item">
+    <svg viewBox="0 0 24 24"><path d="M17,8C15.32,8 13.84,8.61 12.65,9.61C11.16,8.23 9.18,7.39 7,7.39C3.13,7.39 0,10.52 0,14.39C0,15.63 0.32,16.8 0.89,17.81L7.7,6.03L12.71,14.71L17,7.27L24,19.39L20.4,19.39L17,13.52L13.57,19.39L10.29,19.39L7,13.7L3.71,19.39L0.16,19.39C1.1,22.07 3.65,24 6.64,24C9.57,24 12.08,22.12 13.04,19.53C14,22.12 16.5,24 19.43,24C23.3,24 26.43,20.87 26.43,17C26.43,13.13 23.3,10 19.43,10C18.57,10 17.74,10.15 17,10.44V8Z"/></svg>
+    <h3>Sustainable</h3>
+    <p>We prioritize organic materials and small-batch production.</p>
+  </div>
+  <div class="pillar-item">
+    <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M16.2,16.2L11,13V7H12.5V12.2L17,14.9L16.2,16.2Z"/></svg>
+    <h3>Timeless</h3>
+    <p>Designed to outlast trends. Our apparel is made to be a staple.</p>
+  </div>
+</section>
+
+<footer>
+  <p>HANDCRAFTED | SUSTAINABLE | STYLE</p>
+  <p>&copy; 2026 LINDI CLOTHING - MADE IN SRI LANKA</p>
+</footer>
+
 <script>
-  const marquee = document.getElementById('marquee');
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  let isPaused = false;
-
-  // 1. Auto Marquee Logic
-  function autoScroll() {
-    if (!isPaused) {
-      marquee.scrollLeft += 1;
-      // Reset to middle when reaching the end of duplicates
-      if (marquee.scrollLeft >= (marquee.scrollWidth / 2)) {
-        marquee.scrollLeft = 0;
-      }
-    }
+  function scrollPicks(direction) {
+    const container = document.getElementById('hotPicksContainer');
+    // Scroll by the width of one card (280px) + the gap (30px)
+    const scrollAmount = 310; 
+    container.scrollBy({
+      left: direction * scrollAmount,
+      behavior: 'smooth'
+    });
   }
-  let scrollInterval = setInterval(autoScroll, 25);
-
-  // 2. Pause on Hover
-  marquee.addEventListener('mouseenter', () => isPaused = true);
-  marquee.addEventListener('mouseleave', () => isPaused = false);
-
-  // 3. Manual Button Clicks
-  nextBtn.addEventListener('click', () => {
-    marquee.scrollBy({ left: 310, behavior: 'smooth' });
-  });
-
-  prevBtn.addEventListener('click', () => {
-    marquee.scrollBy({ left: -310, behavior: 'smooth' });
-  });
 </script>
+
+</body>
+</html>
