@@ -7,27 +7,29 @@
   <link rel="icon" type="image/png" href="favicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Inter', sans-serif; margin: 0; background: #ffffff; color: #222; overflow-x: hidden; }
-    
+    *, *::before, *::after { box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; margin: 0; background: #fff; color: #222; overflow-x: hidden; }
+
     /* --- NAVIGATION --- */
-    nav { 
-      background: #f9f9f9; 
-      padding: 15px 30px; 
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center; 
-      position: sticky; 
-      top: 0; 
-      z-index: 100; 
-      border-bottom: 1px solid #eee; 
+    nav {
+      background: #f9f9f9;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #eee;
     }
     .logo-container { display: flex; align-items: center; text-decoration: none; }
     .logo-img { height: 40px; margin-right: 12px; }
     .brand-name { font-size: 16px; letter-spacing: 4px; color: #333; font-weight: 500; text-transform: uppercase; }
     nav div { display: flex; }
-    nav a { color: #666; text-decoration: none; margin-left: 15px; font-size: 11px; letter-spacing: 1.5px; font-weight: 500; }
+    nav a.nav-link { color: #666; text-decoration: none; margin-left: 20px; font-size: 11px; letter-spacing: 1.5px; font-weight: 500; text-transform: uppercase; transition: color 0.2s; }
+    nav a.nav-link:hover { color: #9BA88E; }
 
-    /* --- HERO SECTION --- */
+    /* --- HERO --- */
     .hero {
       position: relative;
       height: 70vh;
@@ -39,106 +41,156 @@
       align-items: center;
       text-align: center;
     }
-    .hero::after { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.15); z-index: 1; }
+    .hero::after { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.18); z-index: 1; }
     .hero-content { position: relative; z-index: 2; color: white; padding: 0 20px; }
     .hero-content h1 { font-size: 28px; font-weight: 300; letter-spacing: 6px; text-transform: uppercase; margin-bottom: 25px; }
-    .hero-btn { display: inline-block; padding: 15px 35px; background: #ffffff; color: #333; text-decoration: none; font-size: 10px; letter-spacing: 2px; font-weight: 600; text-transform: uppercase; }
-
-    /* --- HOT PICKS MARQUEE --- */
-    .hot-picks-section { padding: 80px 0; background: #fff; position: relative; overflow: hidden; }
-    .section-title { text-align: center; font-size: 12px; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 40px; color: #9BA88E; font-weight: 600; }
-
-    .scroll-wrapper { position: relative; width: 100%; display: flex; align-items: center; }
-
-    .scroll-container { 
-      display: flex; 
-      gap: 30px;
-      padding: 20px 0;
-      overflow-x: hidden; 
-      white-space: nowrap;
-      width: 100%;
-      scroll-behavior: smooth;
-    }
-
-    .hot-pick-card { 
-      width: 280px; 
-      position: relative; 
-      flex-shrink: 0; 
+    .hero-btn {
       display: inline-block;
+      padding: 15px 35px;
+      background: #fff;
+      color: #333;
       text-decoration: none;
-      transition: transform 0.3s ease;
-    }
-    .hot-pick-card:hover { transform: translateY(-5px); }
-    .hot-pick-image { width: 100%; aspect-ratio: 3/4; object-fit: cover; background: #f9f9f9; border-radius: 4px; display: block; }
-    
-    .ribbon {
-      position: absolute;
-      top: 15px;
-      right: -30px; 
-      background: #c62828; 
-      color: white;
-      text-transform: uppercase;
-      font-size: 8px;
-      font-weight: 600;
+      font-size: 10px;
       letter-spacing: 2px;
-      padding: 5px 30px;
-      transform: rotate(45deg); 
-      z-index: 5;
+      font-weight: 600;
+      text-transform: uppercase;
+      transition: background 0.2s, color 0.2s;
+    }
+    .hero-btn:hover { background: #9BA88E; color: #fff; }
+
+    /* --- HOT PICKS --- */
+    .hot-picks-section { padding: 80px 0; background: #fff; }
+    .section-eyebrow { text-align: center; font-size: 11px; letter-spacing: 5px; text-transform: uppercase; color: #9BA88E; font-weight: 500; margin-bottom: 8px; }
+    .section-heading { text-align: center; font-size: 22px; font-weight: 300; letter-spacing: 2px; color: #222; margin: 0 0 44px; }
+
+    .hp-track-wrap { position: relative; overflow: hidden; }
+    .hp-track {
+      display: flex;
+      gap: 24px;
+      padding: 8px 60px;
+      transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform;
     }
 
-    .nav-btn {
+    .hp-card { flex-shrink: 0; width: 240px; cursor: pointer; }
+    .hp-img-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: #f0eeea;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+    .hp-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+    .hp-card:hover .hp-img-wrap img { transform: scale(1.04); }
+
+    .hp-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: #1a1a1a;
+      color: #f5f5f5;
+      font-size: 9px;
+      letter-spacing: 2.5px;
+      font-weight: 500;
+      text-transform: uppercase;
+      padding: 5px 10px;
+      border-radius: 2px;
+      z-index: 2;
+    }
+    .hp-badge.hot { background: #9BA88E; }
+
+    .hp-card-name { font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: #222; font-weight: 500; margin: 0 0 4px; }
+    .hp-card-sub { font-size: 12px; color: #888; font-weight: 300; margin: 0; }
+    .hp-cta { display: flex; align-items: center; gap: 8px; margin-top: 10px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #9BA88E; font-weight: 500; }
+    .hp-cta-line { flex: 1; height: 1px; background: #9BA88E; opacity: 0.35; transition: opacity 0.3s; }
+    .hp-card:hover .hp-cta-line { opacity: 1; }
+
+    .hp-btn {
       position: absolute;
       top: 50%;
-      transform: translateY(-50%);
-      width: 45px;
-      height: 45px;
-      background: white;
-      border: 1px solid #eee;
+      transform: translateY(-60%);
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
+      background: #fff;
+      border: 1px solid #e5e5e5;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      z-index: 100;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
+      z-index: 10;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      transition: background 0.2s, border-color 0.2s;
     }
-    .nav-btn:hover { background: #9BA88E; border-color: #9BA88E; }
-    .nav-btn:hover svg { fill: white; }
-    .nav-btn svg { width: 20px; fill: #333; }
-    .prev-btn { left: 20px; }
-    .next-btn { right: 20px; }
+    .hp-btn:hover { background: #9BA88E; border-color: #9BA88E; }
+    .hp-btn svg { width: 18px; fill: #333; transition: fill 0.2s; }
+    .hp-btn:hover svg { fill: #fff; }
+    .hp-prev { left: 12px; }
+    .hp-next { right: 12px; }
 
-    /* --- PILLARS SECTION --- */
-    .pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; padding: 80px 20px; max-width: 1100px; margin: 0 auto; text-align: center; border-top: 1px solid #f2f2f2; }
-    .pillar-item svg { width: 30px; height: 30px; margin-bottom: 20px; fill: #9BA88E; }
-    .pillar-item h3 { font-size: 13px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; margin-bottom: 10px; }
-    .pillar-item p { font-size: 14px; color: #777; font-weight: 300; line-height: 1.6; }
+    .hp-dots { display: flex; justify-content: center; gap: 8px; margin-top: 32px; }
+    .hp-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #ddd; border: none; padding: 0; cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .hp-dot.active { background: #9BA88E; transform: scale(1.4); }
 
-    footer { background: #f9f9f9; text-align: center; padding: 40px 20px; font-size: 10px; color: #aaa; letter-spacing: 2px; border-top: 1px solid #eee; text-transform: uppercase; }
+    /* --- PILLARS --- */
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+      padding: 80px 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+      border-top: 1px solid #f2f2f2;
+    }
+    .pillar-item svg { width: 28px; height: 28px; margin-bottom: 18px; fill: #9BA88E; }
+    .pillar-item h3 { font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 600; margin: 0 0 10px; }
+    .pillar-item p { font-size: 14px; color: #777; font-weight: 300; line-height: 1.7; margin: 0; }
 
+    /* --- FOOTER --- */
+    footer {
+      background: #f9f9f9;
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 10px;
+      color: #aaa;
+      letter-spacing: 2px;
+      border-top: 1px solid #eee;
+      text-transform: uppercase;
+    }
+    footer p { margin: 6px 0; }
+
+    /* --- RESPONSIVE --- */
     @media (max-width: 768px) {
-      .nav-btn { display: none; }
-      .hot-pick-card { width: 220px; }
-      .scroll-container { overflow-x: auto; scrollbar-width: none; }
-      .scroll-container::-webkit-scrollbar { display: none; }
+      .hp-btn { display: none; }
+      .hp-track { padding: 8px 20px; overflow-x: auto; scrollbar-width: none; }
+      .hp-track::-webkit-scrollbar { display: none; }
+      .hp-card { width: 200px; }
     }
   </style>
 </head>
 <body>
 
+<!-- NAVIGATION -->
 <nav>
   <a href="index.html" class="logo-container">
     <img src="logo.png" alt="Lindi Logo" class="logo-img">
     <span class="brand-name">LINDI</span>
   </a>
   <div>
-    <a href="index.html">HOME</a>
-    <a href="shop.html">SHOP</a>
-    <a href="about.html">ABOUT</a>
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="shop.html" class="nav-link">Shop</a>
+    <a href="about.html" class="nav-link">About</a>
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-content">
     <h1>Handcrafted Style</h1>
@@ -146,40 +198,67 @@
   </div>
 </section>
 
+<!-- HOT PICKS -->
 <section class="hot-picks-section">
-  <div class="section-title">Hot Picks</div>
-  <div class="scroll-wrapper">
-    <button class="nav-btn prev-btn" id="prevBtn">
+  <p class="section-eyebrow">Curated for you</p>
+  <p class="section-heading">Hot Picks</p>
+
+  <div class="hp-track-wrap" id="trackWrap">
+    <button class="hp-btn hp-prev" id="prevBtn" aria-label="Previous">
       <svg viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/></svg>
     </button>
 
-    <div class="scroll-container" id="marquee">
-      <a href="https://wa.me/94725050456?text=Interested in Grey Hoodie" class="hot-pick-card">
-        <span class="ribbon">Hot</span><img src="grey-hoodie.jpg" alt="Grey Hoodie" class="hot-pick-image">
-      </a>
-      <a href="https://wa.me/94725050456?text=Interested in Black Tee" class="hot-pick-card">
-        <span class="ribbon">Hot</span><img src="black-t-shirt.jpg" alt="Black Tee" class="hot-pick-image">
-      </a>
-      <a href="https://wa.me/94725050456?text=Interested in Signature Tee" class="hot-pick-card">
-        <span class="ribbon">Hot</span><img src="product3.jpg" alt="Signature Tee" class="hot-pick-image">
-      </a>
-      <a href="https://wa.me/94725050456?text=Interested in Grey Hoodie" class="hot-pick-card">
-        <span class="ribbon">Hot</span><img src="grey-hoodie.jpg" alt="Grey Hoodie" class="hot-pick-image">
-      </a>
-      <a href="https://wa.me/94725050456?text=Interested in Black Tee" class="hot-pick-card">
-        <span class="ribbon">Hot</span><img src="black-t-shirt.jpg" alt="Black Tee" class="hot-pick-image">
-      </a>
-      <a href="https://wa.me/94725050456?text=Interested in Signature Tee" class="hot-pick-card">
-        <span class="ribbon">Hot</span><img src="product3.jpg" alt="Signature Tee" class="hot-pick-image">
-      </a>
+    <div class="hp-track" id="track">
+      <div class="hp-card" onclick="openWA('Grey Hoodie')">
+        <div class="hp-img-wrap">
+          <span class="hp-badge hot">Hot</span>
+          <img src="grey-hoodie.jpg" alt="Grey Hoodie">
+        </div>
+        <p class="hp-card-name">Grey Hoodie</p>
+        <p class="hp-card-sub">Organic cotton blend</p>
+        <div class="hp-cta"><span class="hp-cta-line"></span>Order via WhatsApp</div>
+      </div>
+
+      <div class="hp-card" onclick="openWA('Black Tee')">
+        <div class="hp-img-wrap">
+          <span class="hp-badge hot">Hot</span>
+          <img src="black-t-shirt.jpg" alt="Black Tee">
+        </div>
+        <p class="hp-card-name">Black Tee</p>
+        <p class="hp-card-sub">Handcrafted in Sri Lanka</p>
+        <div class="hp-cta"><span class="hp-cta-line"></span>Order via WhatsApp</div>
+      </div>
+
+      <div class="hp-card" onclick="openWA('Signature Tee')">
+        <div class="hp-img-wrap">
+          <span class="hp-badge">New</span>
+          <img src="product3.jpg" alt="Signature Tee">
+        </div>
+        <p class="hp-card-name">Signature Tee</p>
+        <p class="hp-card-sub">Timeless everyday wear</p>
+        <div class="hp-cta"><span class="hp-cta-line"></span>Order via WhatsApp</div>
+      </div>
+
+      <div class="hp-card" onclick="openWA('Linen Shirt')">
+        <div class="hp-img-wrap">
+          <span class="hp-badge">New</span>
+          <img src="grey-hoodie.jpg" alt="Linen Shirt">
+        </div>
+        <p class="hp-card-name">Linen Shirt</p>
+        <p class="hp-card-sub">Breathable & sustainable</p>
+        <div class="hp-cta"><span class="hp-cta-line"></span>Order via WhatsApp</div>
+      </div>
     </div>
 
-    <button class="nav-btn next-btn" id="nextBtn">
+    <button class="hp-btn hp-next" id="nextBtn" aria-label="Next">
       <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
     </button>
   </div>
+
+  <div class="hp-dots" id="dots"></div>
 </section>
 
+<!-- PILLARS -->
 <section class="pillars">
   <div class="pillar-item">
     <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
@@ -187,48 +266,52 @@
     <p>Every piece is handcrafted by local artisans in Sri Lanka.</p>
   </div>
   <div class="pillar-item">
-    <svg viewBox="0 0 24 24"><path d="M17,8C15.32,8 13.84,8.61 12.65,9.61C11.16,8.23 9.18,7.39 7,7.39C3.13,7.39 0,10.52 0,14.39C0,15.63 0.32,16.8 0.89,17.81L7.7,6.03L12.71,14.71L17,7.27L24,19.39L20.4,19.39L17,13.52L13.57,19.39L10.29,19.39L7,13.7L3.71,19.39L0.16,19.39C1.1,22.07 3.65,24 6.64,24C9.57,24 12.08,22.12 13.04,19.53C14,22.12 16.5,24 19.43,24C23.3,24 26.43,20.87 26.43,17C26.43,13.13 23.3,10 19.43,10C18.57,10 17.74,10.15 17,10.44V8Z"/></svg>
+    <svg viewBox="0 0 24 24"><path d="M17 8C15.32 8 13.84 8.61 12.65 9.61 11.16 8.23 9.18 7.39 7 7.39 3.13 7.39 0 10.52 0 14.39c0 1.24.32 2.41.89 3.42L7.7 6.03l5.01 8.68L17 7.27 24 19.39h-3.6L17 13.52l-3.43 5.87h-3.28L7 13.7l-3.29 5.69H.16C1.1 22.07 3.65 24 6.64 24c2.93 0 5.44-1.88 6.4-4.47C14 22.12 16.5 24 19.43 24 23.3 24 26.43 20.87 26.43 17c0-3.87-3.13-7-7-7-.86 0-1.69.15-2.43.44V8z"/></svg>
     <h3>Sustainable</h3>
     <p>We prioritize organic materials and small-batch production.</p>
   </div>
   <div class="pillar-item">
-    <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M16.2,16.2L11,13V7H12.5V12.2L17,14.9L16.2,16.2Z"/></svg>
+    <svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2zm.5 5v6.2l4.5 2.7-.75 1.3L11 14V7h1.5z"/></svg>
     <h3>Timeless</h3>
     <p>Designed to outlast trends. Our apparel is made to be a staple.</p>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-  <p>HANDCRAFTED | SUSTAINABLE | STYLE</p>
-  <p>&copy; 2026 LINDI CLOTHING - MADE IN SRI LANKA</p>
+  <p>Handcrafted &nbsp;|&nbsp; Sustainable &nbsp;|&nbsp; Style</p>
+  <p>&copy; 2026 LINDI CLOTHING — Made in Sri Lanka</p>
 </footer>
 
 <script>
-  const marquee = document.getElementById('marquee');
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  let isPaused = false;
-
-  function autoScroll() {
-    if (!isPaused) {
-      marquee.scrollLeft += 1;
-      if (marquee.scrollLeft >= (marquee.scrollWidth / 2)) {
-        marquee.scrollLeft = 0;
-      }
-    }
+  function openWA(item) {
+    window.open('https://wa.me/94725050456?text=Interested in ' + encodeURIComponent(item), '_blank');
   }
-  let scrollInterval = setInterval(autoScroll, 25);
 
-  marquee.addEventListener('mouseenter', () => isPaused = true);
-  marquee.addEventListener('mouseleave', () => isPaused = false);
+  const track = document.getElementById('track');
+  const dotsEl = document.getElementById('dots');
+  const cards = track.querySelectorAll('.hp-card');
+  const CARD_W = 240 + 24; // width + gap
+  const VISIBLE = 3;
+  const MAX = cards.length - VISIBLE;
+  let cur = 0;
 
-  nextBtn.addEventListener('click', () => {
-    marquee.scrollBy({ left: 310, behavior: 'smooth' });
+  cards.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'hp-dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+    d.onclick = () => go(i);
+    dotsEl.appendChild(d);
   });
 
-  prevBtn.addEventListener('click', () => {
-    marquee.scrollBy({ left: -310, behavior: 'smooth' });
-  });
+  function go(n) {
+    cur = Math.max(0, Math.min(n, MAX));
+    track.style.transform = 'translateX(-' + (cur * CARD_W) + 'px)';
+    dotsEl.querySelectorAll('.hp-dot').forEach((d, i) => d.classList.toggle('active', i === cur));
+  }
+
+  document.getElementById('nextBtn').onclick = () => go(cur + 1);
+  document.getElementById('prevBtn').onclick = () => go(cur - 1);
 </script>
 
 </body>
