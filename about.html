@@ -5,46 +5,583 @@
   <title>About Us | LINDI CLOTHING</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="favicon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Inter', sans-serif; margin: 0; background: #ffffff; color: #222; line-height: 1.8; }
-    nav { background: #f9f9f9; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; }
-    .logo-container { display: flex; align-items: center; text-decoration: none; }
-    .logo-img { height: 40px; margin-right: 12px; }
-    .brand-name { font-size: 16px; letter-spacing: 4px; color: #333; font-weight: 500; text-transform: uppercase; }
-    nav a { color: #666; text-decoration: none; margin-left: 15px; font-size: 11px; letter-spacing: 1.5px; font-weight: 500; }
-    
-    .content { max-width: 600px; margin: 80px auto; padding: 20px; text-align: center; }
-    .content h1 { font-weight: 400; letter-spacing: 6px; text-transform: uppercase; font-size: 20px; margin-bottom: 30px; }
-    .content p { color: #555; font-size: 15px; margin-bottom: 20px; font-weight: 300; }
-    
-    footer { background: #f9f9f9; text-align: center; padding: 40px 20px; font-size: 10px; color: #aaa; border-top: 1px solid #eee; margin-top: 60px; text-transform: uppercase; }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { 
+      font-family: 'Inter', sans-serif; 
+      margin: 0; 
+      background: #fafafa; 
+      color: #1a1a1a; 
+      overflow-x: hidden; 
+    }
+
+    /* --- NAVIGATION --- */
+    nav {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 18px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      transition: padding 0.3s, box-shadow 0.3s;
+    }
+    nav.scrolled { 
+      padding: 12px 40px; 
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    }
+    .logo-container { 
+      display: flex; 
+      align-items: center; 
+      text-decoration: none;
+      transition: transform 0.3s;
+    }
+    .logo-container:hover { transform: scale(1.02); }
+    .logo-img { height: 38px; margin-right: 10px; }
+    .brand-name { 
+      font-size: 18px; 
+      letter-spacing: 6px; 
+      color: #1a1a1a; 
+      font-weight: 600; 
+      text-transform: uppercase; 
+    }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-link { 
+      color: #444; 
+      text-decoration: none; 
+      font-size: 12px; 
+      letter-spacing: 1.2px; 
+      font-weight: 500; 
+      text-transform: uppercase; 
+      position: relative;
+      transition: color 0.3s;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #9BA88E;
+      transition: width 0.3s;
+    }
+    .nav-link:hover { color: #9BA88E; }
+    .nav-link:hover::after { width: 100%; }
+    .nav-cta {
+      padding: 10px 24px;
+      background: #1a1a1a;
+      color: #fff;
+      border-radius: 30px;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      font-weight: 500;
+      text-transform: uppercase;
+      transition: all 0.3s;
+    }
+    .nav-cta:hover { 
+      background: #9BA88E; 
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(155, 168, 142, 0.3);
+    }
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+    .mobile-menu-btn span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #1a1a1a;
+      margin: 5px 0;
+      transition: 0.3s;
+    }
+
+    /* --- HERO SECTION --- */
+    .about-hero {
+      position: relative;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(135deg, #1a1a1a 0%, #3a3a3a 100%);
+      overflow: hidden;
+      margin-top: 0;
+    }
+    .about-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('hero.png') no-repeat center center;
+      background-size: cover;
+      opacity: 0.2;
+      animation: subtleZoom 15s ease-in-out infinite alternate;
+    }
+    @keyframes subtleZoom {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.05); }
+    }
+    .about-hero-content {
+      position: relative;
+      z-index: 2;
+      color: #fff;
+      padding: 0 20px;
+      max-width: 700px;
+    }
+    .about-hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: #9BA88E;
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+    .about-hero h1 {
+      font-size: 48px;
+      font-weight: 300;
+      letter-spacing: 8px;
+      text-transform: uppercase;
+      margin: 0 0 20px;
+    }
+    .about-hero p {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.8;
+      opacity: 0.9;
+      margin: 0;
+    }
+
+    /* --- STORY SECTION --- */
+    .story-section {
+      max-width: 900px;
+      margin: 100px auto;
+      padding: 0 40px;
+      text-align: center;
+    }
+    .section-eyebrow {
+      font-size: 11px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: #9BA88E;
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-size: 32px;
+      font-weight: 300;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin: 0 0 30px;
+    }
+    .story-text {
+      font-size: 16px;
+      line-height: 2;
+      color: #555;
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+
+    /* --- VALUES GRID --- */
+    .values-section {
+      background: #fff;
+      padding: 100px 40px;
+    }
+    .values-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 50px;
+    }
+    .value-card {
+      text-align: center;
+      padding: 50px 40px;
+      background: #fafafa;
+      border-radius: 12px;
+      transition: all 0.3s;
+    }
+    .value-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+      background: #fff;
+    }
+    .value-icon {
+      width: 50px;
+      height: 50px;
+      margin: 0 auto 24px;
+      fill: #9BA88E;
+      transition: transform 0.3s;
+    }
+    .value-card:hover .value-icon {
+      transform: scale(1.1);
+    }
+    .value-title {
+      font-size: 16px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin: 0 0 16px;
+      color: #1a1a1a;
+    }
+    .value-desc {
+      font-size: 15px;
+      line-height: 1.8;
+      color: #666;
+      font-weight: 300;
+      margin: 0;
+    }
+
+    /* --- ARTISANS SECTION --- */
+    .artisans-section {
+      background: #1a1a1a;
+      color: #fff;
+      padding: 100px 40px;
+      text-align: center;
+    }
+    .artisans-section .section-eyebrow {
+      color: #9BA88E;
+    }
+    .artisans-section .section-title {
+      color: #fff;
+    }
+    .artisans-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .artisans-text {
+      font-size: 16px;
+      line-height: 2;
+      color: #ccc;
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      margin-top: 60px;
+    }
+    .stat {
+      padding: 30px 20px;
+      border: 1px solid #333;
+      border-radius: 8px;
+      transition: all 0.3s;
+    }
+    .stat:hover {
+      border-color: #9BA88E;
+      transform: translateY(-5px);
+    }
+    .stat-number {
+      font-size: 42px;
+      font-weight: 300;
+      color: #9BA88E;
+      margin: 0 0 10px;
+    }
+    .stat-label {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #999;
+      margin: 0;
+    }
+
+    /* --- CTA SECTION --- */
+    .cta-section {
+      background: #fff;
+      padding: 100px 40px;
+      text-align: center;
+    }
+    .cta-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .cta-title {
+      font-size: 32px;
+      font-weight: 300;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin: 0 0 20px;
+    }
+    .cta-text {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #666;
+      font-weight: 300;
+      margin: 0 0 40px;
+    }
+    .cta-btn {
+      display: inline-block;
+      padding: 16px 50px;
+      background: #1a1a1a;
+      color: #fff;
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 2px;
+      font-weight: 600;
+      text-transform: uppercase;
+      border-radius: 30px;
+      transition: all 0.3s;
+    }
+    .cta-btn:hover {
+      background: #9BA88E;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(155, 168, 142, 0.4);
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      background: #1a1a1a;
+      color: #999;
+      padding: 60px 40px 30px;
+    }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 50px;
+      margin-bottom: 40px;
+    }
+    .footer-brand h3 {
+      font-size: 20px;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: #fff;
+      margin: 0 0 16px;
+      font-weight: 600;
+    }
+    .footer-brand p {
+      font-size: 13px;
+      line-height: 1.8;
+      color: #888;
+      margin: 0 0 20px;
+    }
+    .social-links {
+      display: flex;
+      gap: 16px;
+    }
+    .social-links a {
+      width: 36px;
+      height: 36px;
+      background: #2a2a2a;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+    .social-links a:hover {
+      background: #9BA88E;
+      transform: translateY(-3px);
+    }
+    .social-links svg {
+      width: 16px;
+      height: 16px;
+      fill: #fff;
+    }
+    .footer-section h4 {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #fff;
+      margin: 0 0 20px;
+      font-weight: 600;
+    }
+    .footer-section a {
+      display: block;
+      color: #888;
+      text-decoration: none;
+      font-size: 13px;
+      margin-bottom: 12px;
+      transition: color 0.3s;
+    }
+    .footer-section a:hover { color: #9BA88E; }
+    .footer-bottom {
+      border-top: 1px solid #2a2a2a;
+      padding-top: 30px;
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 968px) {
+      .nav-links { display: none; }
+      .mobile-menu-btn { display: block; }
+      .footer-content { grid-template-columns: 1fr; gap: 40px; }
+      .stats { grid-template-columns: 1fr; }
+    }
 
     @media (max-width: 768px) {
-      nav { flex-direction: column; padding: 15px; }
-      .logo-container { margin-bottom: 10px; }
-      nav div { display: flex; justify-content: center; width: 100%; }
-      nav a { margin: 0 10px; }
-      .content { margin: 40px auto; }
+      nav { padding: 15px 20px; }
+      .about-hero { height: 50vh; }
+      .about-hero h1 { font-size: 32px; letter-spacing: 4px; }
+      .section-title { font-size: 24px; }
+      .story-section { margin: 60px auto; padding: 0 20px; }
+      .values-section { padding: 60px 20px; }
+      .artisans-section { padding: 60px 20px; }
+      .cta-section { padding: 60px 20px; }
+      .values-grid { gap: 30px; }
     }
   </style>
 </head>
 <body>
-<nav>
+
+<!-- NAVIGATION -->
+<nav id="nav">
   <a href="index.html" class="logo-container">
     <img src="logo.png" alt="Lindi Logo" class="logo-img">
     <span class="brand-name">LINDI</span>
   </a>
-  <div><a href="index.html">HOME</a><a href="shop.html">SHOP</a><a href="about.html">ABOUT</a></div>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="shop.html" class="nav-link">Shop</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="shop.html" class="nav-link nav-cta">Shop Now</a>
+  </div>
+  <button class="mobile-menu-btn">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
 
-<div class="content">
-  <h1>Our Ethos</h1>
-  <p>LINDI CLOTHING represents the intersection of timeless style and sustainable practices.</p>
-  <p>Born in Sri Lanka, our mission is to create apparel that feels as good as it looks.</p>
-  <p>Handcrafted. Sustainable. Distinctly yours.</p>
-</div>
+<!-- HERO -->
+<section class="about-hero">
+  <div class="about-hero-content">
+    <p class="about-hero-eyebrow">Our Story</p>
+    <h1>About Lindi</h1>
+    <p>Where tradition meets conscious design. Creating timeless pieces that honor both people and planet.</p>
+  </div>
+</section>
 
-<footer><p>&copy; 2026 LINDI CLOTHING</p></footer>
+<!-- STORY -->
+<section class="story-section">
+  <p class="section-eyebrow">The Beginning</p>
+  <h2 class="section-title">Our Story</h2>
+  <p class="story-text">LINDI CLOTHING was born from a simple belief: fashion should be both beautiful and responsible. Founded in the heart of Sri Lanka, we set out to create apparel that stands the test of time—pieces that feel as good as they look.</p>
+  <p class="story-text">Every garment tells a story of skilled hands, sustainable materials, and a commitment to doing things differently. We believe in slow fashion, mindful production, and designs that transcend seasons.</p>
+  <p class="story-text">This is more than clothing. This is a movement toward intentional living.</p>
+</section>
+
+<!-- VALUES -->
+<section class="values-section">
+  <div class="values-grid">
+    <div class="value-card">
+      <svg class="value-icon" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+      <h3 class="value-title">Ethically Made</h3>
+      <p class="value-desc">Every piece is handcrafted by local artisans in Sri Lanka. We ensure fair wages, safe working conditions, and respect for the people behind our products.</p>
+    </div>
+
+    <div class="value-card">
+      <svg class="value-icon" viewBox="0 0 24 24"><path d="M17 8C15.32 8 13.84 8.61 12.65 9.61 11.16 8.23 9.18 7.39 7 7.39 3.13 7.39 0 10.52 0 14.39c0 1.24.32 2.41.89 3.42L7.7 6.03l5.01 8.68L17 7.27 24 19.39h-3.6L17 13.52l-3.43 5.87h-3.28L7 13.7l-3.29 5.69H.16C1.1 22.07 3.65 24 6.64 24c2.93 0 5.44-1.88 6.4-4.47C14 22.12 16.5 24 19.43 24 23.3 24 26.43 20.87 26.43 17c0-3.87-3.13-7-7-7-.86 0-1.69.15-2.43.44V8z"/></svg>
+      <h3 class="value-title">Sustainable</h3>
+      <p class="value-desc">We prioritize organic materials, minimal waste, and small-batch production. Our commitment is to leave the planet better than we found it.</p>
+    </div>
+
+    <div class="value-card">
+      <svg class="value-icon" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2zm.5 5v6.2l4.5 2.7-.75 1.3L11 14V7h1.5z"/></svg>
+      <h3 class="value-title">Timeless Design</h3>
+      <p class="value-desc">We design pieces meant to outlast trends. Simple, versatile, and enduring—our clothing is built to be a staple in your wardrobe for years to come.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ARTISANS -->
+<section class="artisans-section">
+  <div class="artisans-content">
+    <p class="section-eyebrow">The Hands Behind the Craft</p>
+    <h2 class="section-title">Our Artisans</h2>
+    <p class="artisans-text">At the heart of LINDI are the skilled craftspeople who bring each design to life. Working from small workshops across Sri Lanka, our artisans use traditional techniques passed down through generations.</p>
+    <p class="artisans-text">We partner directly with local communities, ensuring transparency at every step. No middlemen. No compromises. Just honest work, fair pay, and mutual respect.</p>
+  </div>
+  
+  <div class="stats">
+    <div class="stat">
+      <p class="stat-number">100%</p>
+      <p class="stat-label">Handcrafted</p>
+    </div>
+    <div class="stat">
+      <p class="stat-number">Local</p>
+      <p class="stat-label">Sri Lankan Made</p>
+    </div>
+    <div class="stat">
+      <p class="stat-number">Fair</p>
+      <p class="stat-label">Wage Guaranteed</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-content">
+    <h2 class="cta-title">Join the Movement</h2>
+    <p class="cta-text">Every purchase supports ethical craftsmanship and sustainable practices. Wear something that matters.</p>
+    <a href="shop.html" class="cta-btn">Explore Collection</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-brand">
+      <h3>LINDI</h3>
+      <p>Handcrafted sustainable clothing made with purpose in Sri Lanka. Quality pieces designed to last.</p>
+      <div class="social-links">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96A10 10 0 0 0 22 12.06C22 6.53 17.5 2.04 12 2.04Z"/></svg></a>
+        <a href="https://wa.me/94725050456" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-section">
+      <h4>Shop</h4>
+      <a href="shop.html">All Products</a>
+      <a href="shop.html">Tees</a>
+      <a href="shop.html">Hoodies</a>
+      <a href="shop.html">Bottoms</a>
+    </div>
+    <div class="footer-section">
+      <h4>About</h4>
+      <a href="about.html">Our Story</a>
+      <a href="about.html">Sustainability</a>
+      <a href="about.html">Artisans</a>
+      <a href="about.html">Contact</a>
+    </div>
+    <div class="footer-section">
+      <h4>Support</h4>
+      <a href="#">Size Guide</a>
+      <a href="#">Shipping</a>
+      <a href="#">Returns</a>
+      <a href="#">FAQ</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 LINDI CLOTHING — Handcrafted in Sri Lanka</p>
+  </div>
+</footer>
+
+<script>
+  // Scroll effect on nav
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('nav');
+    if (window.scrollY > 50) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+</script>
+
 </body>
 </html>
