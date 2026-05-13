@@ -195,7 +195,7 @@
 
     /* --- VALUES GRID --- */
     .values-section {
-      background: var(--secondary-bg);
+      background: var(--border-color);
       padding: 100px 40px;
     }
     .values-grid {
@@ -215,7 +215,7 @@
     .value-card:hover {
       transform: translateY(-8px);
       box-shadow: 0 12px 30px var(--card-shadow);
-      background: var(--secondary-bg);
+      background: var(--border-color);
     }
     .value-icon {
       width: 50px;
@@ -299,7 +299,7 @@
 
     /* --- CTA SECTION --- */
     .cta-section {
-      background: var(--secondary-bg);
+      background: var(--border-color);
       padding: 100px 40px;
       text-align: center;
     }
@@ -386,10 +386,13 @@
       background: var(--accent-color);
       transform: translateY(-3px);
     }
+    .social-links a:hover svg {
+      fill: var(--text-on-dark);
+    }
     .social-links svg {
       width: 16px;
       height: 16px;
-      fill: var(--secondary-bg);
+      fill: var(--text-color);
     }
     .footer-section h4 {
       font-size: 12px;
@@ -446,7 +449,6 @@
     <img src="logo.png" alt="Lindi Logo" class="logo-img">
     <span class="brand-name">LINDI</span>
   </a>
-    <button id="theme-toggle" aria-label="Toggle Theme" style="background:none; border:none; cursor:pointer; font-size:20px; padding:0; margin-left:10px;"></button>
   <div class="nav-links">
     <a href="index.html" class="nav-link">Home</a>
     <a href="shop.html" class="nav-link">Shop</a>
@@ -586,5 +588,6 @@
   });
 </script>
 
+  <button id="theme-toggle" aria-label="Toggle Theme"></button>
 </body>
 </html>

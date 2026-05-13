@@ -136,7 +136,7 @@
     .hero-content { 
       position: relative; 
       z-index: 2; 
-      color: var(--secondary-bg);
+      color: var(--hero-text);
       padding: 0 20px;
       animation: fadeInUp 1s ease-out;
     }
@@ -189,17 +189,17 @@
     }
     .hero-btn:hover { 
       background: var(--accent-color);
-      color: var(--secondary-bg);
+      color: var(--text-on-dark);
       transform: translateY(-3px);
       box-shadow: 0 8px 25px rgba(var(--accent-rgb), 0.4);
     }
     .hero-btn.secondary {
       background: transparent;
-      border: 2px solid var(--secondary-bg);
-      color: var(--secondary-bg);
+      border: 2px solid var(--hero-text);
+      color: var(--hero-text);
     }
     .hero-btn.secondary:hover {
-      background: var(--secondary-bg);
+      background: var(--border-color);
       color: var(--text-color);
     }
     .scroll-indicator {
@@ -217,14 +217,14 @@
     .scroll-indicator svg {
       width: 24px;
       height: 24px;
-      fill: var(--secondary-bg);
+      fill: var(--hero-text);
       opacity: 0.7;
     }
 
     /* --- HOT PICKS --- */
     .hot-picks-section { 
       padding: 100px 0; 
-      background: var(--secondary-bg);
+      background: var(--border-color);
       position: relative;
     }
     .section-eyebrow { 
@@ -290,7 +290,7 @@
       top: 16px;
       left: 16px;
       background: var(--footer-bg);
-      color: var(--secondary-bg);
+      color: var(--text-on-dark);
       font-size: 9px;
       letter-spacing: 2.5px;
       font-weight: 600;
@@ -341,7 +341,7 @@
       width: 50px;
       height: 50px;
       border-radius: 50%;
-      background: var(--secondary-bg);
+      background: var(--border-color);
       border: none;
       display: flex;
       align-items: center;
@@ -357,7 +357,7 @@
       box-shadow: 0 6px 30px rgba(var(--accent-rgb), 0.4);
     }
     .hp-btn svg { width: 20px; fill: var(--text-color); transition: fill 0.2s; }
-    .hp-btn:hover svg { fill: var(--secondary-bg); }
+    .hp-btn:hover svg { fill: var(--text-on-dark); }
     .hp-prev { left: 20px; }
     .hp-next { right: 20px; }
 
@@ -387,7 +387,7 @@
     }
     .pillar-item {
       padding: 40px 30px;
-      background: var(--secondary-bg);
+      background: var(--border-color);
       border-radius: 12px;
       transition: all 0.3s;
       box-shadow: 0 2px 10px var(--card-shadow);
@@ -438,7 +438,7 @@
       font-size: 20px;
       letter-spacing: 6px;
       text-transform: uppercase;
-      color: var(--secondary-bg);
+      color: var(--text-on-dark);
       margin: 0 0 16px;
       font-weight: 600;
     }
@@ -466,16 +466,19 @@
       background: var(--accent-color);
       transform: translateY(-3px);
     }
+    .social-links a:hover svg {
+      fill: var(--text-on-dark);
+    }
     .social-links svg {
       width: 16px;
       height: 16px;
-      fill: var(--secondary-bg);
+      fill: var(--text-color);
     }
     .footer-section h4 {
       font-size: 12px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--secondary-bg);
+      color: var(--text-on-dark);
       margin: 0 0 20px;
       font-weight: 600;
     }
@@ -508,7 +511,7 @@
         top: 100%;
         left: 0;
         width: 100%;
-        background: var(--secondary-bg);
+        background: var(--border-color);
         padding: 40px;
         gap: 24px;
         border-bottom: 1px solid var(--nav-border);
@@ -551,7 +554,6 @@
     <img src="logo.png" alt="Lindi Logo" class="logo-img">
     <span class="brand-name">LINDI</span>
   </a>
-    <button id="theme-toggle" aria-label="Toggle Theme" style="background:none; border:none; cursor:pointer; font-size:20px; padding:0; margin-left:10px;"></button>
   
   <div class="nav-links" id="navLinks">
     <a href="index.html" class="nav-link">Home</a>
@@ -771,5 +773,6 @@
   });
 </script>
 
+  <button id="theme-toggle" aria-label="Toggle Theme"></button>
 </body>
 </html>
