@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <title>Shop | LINDI CLOTHING</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="vars.css">
+  <script src="theme.js"></script>
   <link rel="icon" type="image/png" href="favicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
@@ -11,14 +13,14 @@
     body { 
       font-family: 'Inter', sans-serif; 
       margin: 0; 
-      background: #fafafa; 
-      color: #1a1a1a; 
+      background: var(--bg-color);
+      color: var(--text-color);
       overflow-x: hidden; 
     }
 
     /* --- NAVIGATION --- */
     nav {
-      background: rgba(255, 255, 255, 0.95);
+      background: var(--nav-bg);
       backdrop-filter: blur(10px);
       padding: 18px 40px;
       display: flex;
@@ -29,12 +31,12 @@
       left: 0;
       right: 0;
       z-index: 1000;
-      border-bottom: 1px solid rgba(0,0,0,0.06);
+      border-bottom: 1px solid var(--nav-border);
       transition: padding 0.3s, box-shadow 0.3s;
     }
     nav.scrolled { 
       padding: 12px 40px; 
-      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+      box-shadow: 0 2px 20px var(--card-shadow);
     }
     .logo-container { 
       display: flex; 
@@ -47,13 +49,13 @@
     .brand-name { 
       font-size: 18px; 
       letter-spacing: 6px; 
-      color: #1a1a1a; 
+      color: var(--text-color);
       font-weight: 600; 
       text-transform: uppercase; 
     }
     .nav-links { display: flex; align-items: center; gap: 32px; }
     .nav-link { 
-      color: #444; 
+      color: var(--secondary-text);
       text-decoration: none; 
       font-size: 12px; 
       letter-spacing: 1.2px; 
@@ -69,15 +71,15 @@
       left: 0;
       width: 0;
       height: 2px;
-      background: #9BA88E;
+      background: var(--accent-color);
       transition: width 0.3s;
     }
-    .nav-link:hover { color: #9BA88E; }
+    .nav-link:hover { color: var(--accent-color); }
     .nav-link:hover::after { width: 100%; }
     .nav-cta {
       padding: 10px 24px;
-      background: #1a1a1a;
-      color: #fff;
+      background: var(--footer-bg);
+      color: var(--text-on-dark);
       border-radius: 30px;
       font-size: 11px;
       letter-spacing: 1.5px;
@@ -86,9 +88,9 @@
       transition: all 0.3s;
     }
     .nav-cta:hover { 
-      background: #9BA88E; 
+      background: var(--accent-color);
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(155, 168, 142, 0.3);
+      box-shadow: 0 4px 12px rgba(var(--accent-rgb), 0.3);
     }
     .mobile-menu-btn {
       display: none;
@@ -101,7 +103,7 @@
       display: block;
       width: 24px;
       height: 2px;
-      background: #1a1a1a;
+      background: var(--footer-bg);
       margin: 5px 0;
       transition: 0.3s;
     }
@@ -110,13 +112,13 @@
     .shop-header { 
       text-align: center; 
       padding: 140px 20px 40px; 
-      background: #fff;
+      background: var(--secondary-bg);
     }
     .shop-header p { 
       font-size: 11px; 
       letter-spacing: 5px; 
       text-transform: uppercase; 
-      color: #9BA88E; 
+      color: var(--accent-color);
       font-weight: 500; 
       margin: 0 0 12px; 
     }
@@ -135,8 +137,8 @@
       gap: 12px;
       flex-wrap: wrap;
       padding: 40px 20px 30px;
-      background: #fff;
-      border-bottom: 1px solid rgba(0,0,0,0.06);
+      background: var(--secondary-bg);
+      border-bottom: 1px solid var(--nav-border);
     }
     .filter-btn {
       padding: 11px 28px;
@@ -145,24 +147,24 @@
       text-transform: uppercase;
       font-weight: 500;
       font-family: 'Inter', sans-serif;
-      border: 1px solid #ddd;
-      background: #fff;
-      color: #666;
+      border: 1px solid var(--border-color);
+      background: var(--secondary-bg);
+      color: var(--secondary-text);
       cursor: pointer;
       border-radius: 30px;
       transition: all 0.3s;
     }
     .filter-btn:hover { 
-      border-color: #9BA88E; 
-      color: #9BA88E;
+      border-color: var(--accent-color);
+      color: var(--accent-color);
       transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(155, 168, 142, 0.15);
     }
     .filter-btn.active { 
-      background: #9BA88E; 
-      border-color: #9BA88E; 
-      color: #fff;
-      box-shadow: 0 4px 12px rgba(155, 168, 142, 0.3);
+      background: var(--accent-color);
+      border-color: var(--accent-color);
+      color: var(--text-on-dark);
+      box-shadow: 0 4px 12px rgba(var(--accent-rgb), 0.3);
     }
 
     /* --- GRID --- */
@@ -188,14 +190,14 @@
       width: 100%;
       aspect-ratio: 3/4;
       overflow: hidden;
-      background: #f8f8f8;
+      background: var(--light-grey);
       border-radius: 12px;
       cursor: pointer;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 20px var(--card-shadow);
       transition: box-shadow 0.3s;
     }
     .product:hover .product-image-wrapper {
-      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+      box-shadow: 0 12px 40px var(--card-shadow-hover);
     }
     .product-image-wrapper img {
       width: 100%; 
@@ -219,12 +221,12 @@
       z-index: 2;
     }
     .badge-hot { 
-      background: linear-gradient(135deg, #9BA88E 0%, #7a8a6e 100%);
-      color: #fff; 
+      background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-dark) 100%);
+      color: var(--text-on-dark);
     }
     .badge-new { 
-      background: #1a1a1a; 
-      color: #fff; 
+      background: var(--footer-bg);
+      color: var(--text-on-dark);
     }
 
     .quick-view-btn {
@@ -232,7 +234,7 @@
       bottom: 16px; 
       left: 50%;
       transform: translateX(-50%) translateY(8px);
-      background: rgba(255,255,255,0.95);
+      background: var(--nav-bg);
       backdrop-filter: blur(10px);
       border: none;
       padding: 12px 28px;
@@ -250,8 +252,8 @@
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
     .quick-view-btn:hover {
-      background: #9BA88E;
-      color: #fff;
+      background: var(--accent-color);
+      color: var(--text-on-dark);
     }
     .product:hover .quick-view-btn { 
       opacity: 1; 
@@ -275,7 +277,7 @@
     }
     .price { 
       font-size: 14px; 
-      color: #888; 
+      color: var(--muted-text);
       font-weight: 300; 
     }
 
@@ -289,8 +291,8 @@
     .size-btn {
       width: 38px; 
       height: 38px;
-      border: 1px solid #ddd;
-      background: #fff;
+      border: 1px solid var(--border-color);
+      background: var(--secondary-bg);
       font-size: 11px; 
       letter-spacing: 1px;
       font-family: 'Inter', sans-serif;
@@ -304,15 +306,15 @@
       justify-content: center;
     }
     .size-btn:hover { 
-      border-color: #9BA88E; 
-      color: #9BA88E;
+      border-color: var(--accent-color);
+      color: var(--accent-color);
       transform: scale(1.05);
     }
     .size-btn.selected { 
-      background: #9BA88E; 
-      border-color: #9BA88E; 
-      color: #fff;
-      box-shadow: 0 2px 8px rgba(155, 168, 142, 0.3);
+      background: var(--accent-color);
+      border-color: var(--accent-color);
+      color: var(--text-on-dark);
+      box-shadow: 0 2px 8px rgba(var(--accent-rgb), 0.3);
     }
 
     /* --- ORDER BTN --- */
@@ -320,8 +322,8 @@
       display: block; 
       width: 100%;
       padding: 14px;
-      background: #1a1a1a; 
-      color: #fff;
+      background: var(--footer-bg);
+      color: var(--text-on-dark);
       border: none; 
       cursor: pointer;
       font-size: 11px; 
@@ -335,16 +337,16 @@
       text-decoration: none;
     }
     .order-btn:hover { 
-      background: #9BA88E;
+      background: var(--accent-color);
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(155, 168, 142, 0.3);
+      box-shadow: 0 6px 20px rgba(var(--accent-rgb), 0.3);
     }
 
     /* --- QUICK VIEW MODAL --- */
     .modal-overlay {
       position: fixed; 
       inset: 0;
-      background: rgba(0,0,0,0.65);
+      background: var(--modal-overlay);
       backdrop-filter: blur(5px);
       z-index: 2000;
       display: flex; 
@@ -361,7 +363,7 @@
     }
 
     .modal {
-      background: #fff;
+      background: var(--secondary-bg);
       max-width: 900px; 
       width: 100%;
       display: grid; 
@@ -394,7 +396,7 @@
       font-size: 10px; 
       letter-spacing: 3px; 
       text-transform: uppercase; 
-      color: #9BA88E; 
+      color: var(--accent-color);
       font-weight: 500; 
       margin: 0 0 12px; 
     }
@@ -407,13 +409,13 @@
     }
     .modal-price { 
       font-size: 16px; 
-      color: #888; 
+      color: var(--muted-text);
       font-weight: 300; 
       margin: 0 0 28px; 
     }
     .modal-desc { 
       font-size: 14px; 
-      color: #666; 
+      color: var(--secondary-text);
       line-height: 1.8; 
       font-weight: 300; 
       margin: 0 0 28px; 
@@ -435,14 +437,14 @@
       position: absolute; 
       top: 20px; 
       right: 24px;
-      background: rgba(255,255,255,0.9); 
+      background: var(--nav-bg);
       border: none;
       width: 36px;
       height: 36px;
       border-radius: 50%;
       font-size: 20px; 
       cursor: pointer;
-      color: #666; 
+      color: var(--secondary-text);
       line-height: 1;
       z-index: 10;
       transition: all 0.3s;
@@ -451,15 +453,15 @@
       justify-content: center;
     }
     .modal-close:hover { 
-      background: #9BA88E; 
-      color: #fff;
+      background: var(--accent-color);
+      color: var(--text-on-dark);
       transform: rotate(90deg);
     }
 
     /* --- FOOTER --- */
     footer {
-      background: #1a1a1a;
-      color: #999;
+      background: var(--footer-bg);
+      color: var(--footer-text);
       padding: 60px 40px 30px;
     }
     .footer-content {
@@ -474,14 +476,14 @@
       font-size: 20px;
       letter-spacing: 6px;
       text-transform: uppercase;
-      color: #fff;
+      color: var(--text-on-dark);
       margin: 0 0 16px;
       font-weight: 600;
     }
     .footer-brand p {
       font-size: 13px;
       line-height: 1.8;
-      color: #888;
+      color: var(--muted-text);
       margin: 0 0 20px;
     }
     .social-links {
@@ -491,7 +493,7 @@
     .social-links a {
       width: 36px;
       height: 36px;
-      background: #2a2a2a;
+      background: var(--secondary-bg);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -499,33 +501,33 @@
       transition: all 0.3s;
     }
     .social-links a:hover {
-      background: #9BA88E;
+      background: var(--accent-color);
       transform: translateY(-3px);
     }
     .social-links svg {
       width: 16px;
       height: 16px;
-      fill: #fff;
+      fill: var(--secondary-bg);
     }
     .footer-section h4 {
       font-size: 12px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: #fff;
+      color: var(--text-on-dark);
       margin: 0 0 20px;
       font-weight: 600;
     }
     .footer-section a {
       display: block;
-      color: #888;
+      color: var(--muted-text);
       text-decoration: none;
       font-size: 13px;
       margin-bottom: 12px;
       transition: color 0.3s;
     }
-    .footer-section a:hover { color: #9BA88E; }
+    .footer-section a:hover { color: var(--accent-color); }
     .footer-bottom {
-      border-top: 1px solid #2a2a2a;
+      border-top: 1px solid var(--border-color);
       padding-top: 30px;
       text-align: center;
       font-size: 11px;
@@ -568,6 +570,7 @@
     <img src="logo.png" alt="Lindi Logo" class="logo-img">
     <span class="brand-name">LINDI</span>
   </a>
+    <button id="theme-toggle" aria-label="Toggle Theme" style="background:none; border:none; cursor:pointer; font-size:20px; padding:0; margin-left:10px;"></button>
   <div class="nav-links">
     <a href="index.html" class="nav-link">Home</a>
     <a href="shop.html" class="nav-link">Shop</a>
