@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <title>About Us | LINDI CLOTHING</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="vars.css">
+  <script src="theme.js"></script>
   <link rel="icon" type="image/png" href="favicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
@@ -11,14 +13,14 @@
     body { 
       font-family: 'Inter', sans-serif; 
       margin: 0; 
-      background: #fafafa; 
-      color: #1a1a1a; 
+      background: var(--bg-color);
+      color: var(--text-color);
       overflow-x: hidden; 
     }
 
     /* --- NAVIGATION --- */
     nav {
-      background: rgba(255, 255, 255, 0.95);
+      background: var(--nav-bg);
       backdrop-filter: blur(10px);
       padding: 18px 40px;
       display: flex;
@@ -29,12 +31,12 @@
       left: 0;
       right: 0;
       z-index: 1000;
-      border-bottom: 1px solid rgba(0,0,0,0.06);
+      border-bottom: 1px solid var(--nav-border);
       transition: padding 0.3s, box-shadow 0.3s;
     }
     nav.scrolled { 
       padding: 12px 40px; 
-      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+      box-shadow: 0 2px 20px var(--card-shadow);
     }
     .logo-container { 
       display: flex; 
@@ -47,13 +49,13 @@
     .brand-name { 
       font-size: 18px; 
       letter-spacing: 6px; 
-      color: #1a1a1a; 
+      color: var(--text-color);
       font-weight: 600; 
       text-transform: uppercase; 
     }
     .nav-links { display: flex; align-items: center; gap: 32px; }
     .nav-link { 
-      color: #444; 
+      color: var(--secondary-text);
       text-decoration: none; 
       font-size: 12px; 
       letter-spacing: 1.2px; 
@@ -69,15 +71,15 @@
       left: 0;
       width: 0;
       height: 2px;
-      background: #9BA88E;
+      background: var(--accent-color);
       transition: width 0.3s;
     }
-    .nav-link:hover { color: #9BA88E; }
+    .nav-link:hover { color: var(--accent-color); }
     .nav-link:hover::after { width: 100%; }
     .nav-cta {
       padding: 10px 24px;
-      background: #1a1a1a;
-      color: #fff;
+      background: var(--footer-bg);
+      color: var(--text-on-dark);
       border-radius: 30px;
       font-size: 11px;
       letter-spacing: 1.5px;
@@ -86,9 +88,9 @@
       transition: all 0.3s;
     }
     .nav-cta:hover { 
-      background: #9BA88E; 
+      background: var(--accent-color);
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(155, 168, 142, 0.3);
+      box-shadow: 0 4px 12px rgba(var(--accent-rgb), 0.3);
     }
     .mobile-menu-btn {
       display: none;
@@ -101,7 +103,7 @@
       display: block;
       width: 24px;
       height: 2px;
-      background: #1a1a1a;
+      background: var(--footer-bg);
       margin: 5px 0;
       transition: 0.3s;
     }
@@ -114,7 +116,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      background: linear-gradient(135deg, #1a1a1a 0%, #3a3a3a 100%);
+      background: var(--hero-overlay);
       overflow: hidden;
       margin-top: 0;
     }
@@ -134,7 +136,7 @@
     .about-hero-content {
       position: relative;
       z-index: 2;
-      color: #fff;
+      color: var(--text-on-dark);
       padding: 0 20px;
       max-width: 700px;
     }
@@ -142,7 +144,7 @@
       font-size: 11px;
       letter-spacing: 5px;
       text-transform: uppercase;
-      color: #9BA88E;
+      color: var(--accent-color);
       margin-bottom: 16px;
       font-weight: 500;
     }
@@ -172,7 +174,7 @@
       font-size: 11px;
       letter-spacing: 5px;
       text-transform: uppercase;
-      color: #9BA88E;
+      color: var(--accent-color);
       font-weight: 500;
       margin-bottom: 16px;
     }
@@ -186,14 +188,14 @@
     .story-text {
       font-size: 16px;
       line-height: 2;
-      color: #555;
+      color: var(--secondary-text);
       font-weight: 300;
       margin-bottom: 20px;
     }
 
     /* --- VALUES GRID --- */
     .values-section {
-      background: #fff;
+      background: var(--secondary-bg);
       padding: 100px 40px;
     }
     .values-grid {
@@ -206,20 +208,20 @@
     .value-card {
       text-align: center;
       padding: 50px 40px;
-      background: #fafafa;
+      background: var(--bg-color);
       border-radius: 12px;
       transition: all 0.3s;
     }
     .value-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.1);
-      background: #fff;
+      box-shadow: 0 12px 30px var(--card-shadow);
+      background: var(--secondary-bg);
     }
     .value-icon {
       width: 50px;
       height: 50px;
       margin: 0 auto 24px;
-      fill: #9BA88E;
+      fill: var(--accent-color);
       transition: transform 0.3s;
     }
     .value-card:hover .value-icon {
@@ -231,28 +233,28 @@
       text-transform: uppercase;
       font-weight: 600;
       margin: 0 0 16px;
-      color: #1a1a1a;
+      color: var(--text-color);
     }
     .value-desc {
       font-size: 15px;
       line-height: 1.8;
-      color: #666;
+      color: var(--secondary-text);
       font-weight: 300;
       margin: 0;
     }
 
     /* --- ARTISANS SECTION --- */
     .artisans-section {
-      background: #1a1a1a;
-      color: #fff;
+      background: var(--footer-bg);
+      color: var(--text-on-dark);
       padding: 100px 40px;
       text-align: center;
     }
     .artisans-section .section-eyebrow {
-      color: #9BA88E;
+      color: var(--accent-color);
     }
     .artisans-section .section-title {
-      color: #fff;
+      color: var(--text-on-dark);
     }
     .artisans-content {
       max-width: 800px;
@@ -261,7 +263,7 @@
     .artisans-text {
       font-size: 16px;
       line-height: 2;
-      color: #ccc;
+      color: var(--secondary-text);
       font-weight: 300;
       margin-bottom: 20px;
     }
@@ -273,31 +275,31 @@
     }
     .stat {
       padding: 30px 20px;
-      border: 1px solid #333;
+      border: 1px solid var(--border-color);
       border-radius: 8px;
       transition: all 0.3s;
     }
     .stat:hover {
-      border-color: #9BA88E;
+      border-color: var(--accent-color);
       transform: translateY(-5px);
     }
     .stat-number {
       font-size: 42px;
       font-weight: 300;
-      color: #9BA88E;
+      color: var(--accent-color);
       margin: 0 0 10px;
     }
     .stat-label {
       font-size: 12px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: #999;
+      color: var(--footer-text);
       margin: 0;
     }
 
     /* --- CTA SECTION --- */
     .cta-section {
-      background: #fff;
+      background: var(--secondary-bg);
       padding: 100px 40px;
       text-align: center;
     }
@@ -315,15 +317,15 @@
     .cta-text {
       font-size: 16px;
       line-height: 1.8;
-      color: #666;
+      color: var(--secondary-text);
       font-weight: 300;
       margin: 0 0 40px;
     }
     .cta-btn {
       display: inline-block;
       padding: 16px 50px;
-      background: #1a1a1a;
-      color: #fff;
+      background: var(--footer-bg);
+      color: var(--text-on-dark);
       text-decoration: none;
       font-size: 11px;
       letter-spacing: 2px;
@@ -333,15 +335,15 @@
       transition: all 0.3s;
     }
     .cta-btn:hover {
-      background: #9BA88E;
+      background: var(--accent-color);
       transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(155, 168, 142, 0.4);
+      box-shadow: 0 8px 25px rgba(var(--accent-rgb), 0.4);
     }
 
     /* --- FOOTER --- */
     footer {
-      background: #1a1a1a;
-      color: #999;
+      background: var(--footer-bg);
+      color: var(--footer-text);
       padding: 60px 40px 30px;
     }
     .footer-content {
@@ -356,14 +358,14 @@
       font-size: 20px;
       letter-spacing: 6px;
       text-transform: uppercase;
-      color: #fff;
+      color: var(--text-on-dark);
       margin: 0 0 16px;
       font-weight: 600;
     }
     .footer-brand p {
       font-size: 13px;
       line-height: 1.8;
-      color: #888;
+      color: var(--muted-text);
       margin: 0 0 20px;
     }
     .social-links {
@@ -373,7 +375,7 @@
     .social-links a {
       width: 36px;
       height: 36px;
-      background: #2a2a2a;
+      background: var(--secondary-bg);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -381,33 +383,33 @@
       transition: all 0.3s;
     }
     .social-links a:hover {
-      background: #9BA88E;
+      background: var(--accent-color);
       transform: translateY(-3px);
     }
     .social-links svg {
       width: 16px;
       height: 16px;
-      fill: #fff;
+      fill: var(--secondary-bg);
     }
     .footer-section h4 {
       font-size: 12px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: #fff;
+      color: var(--text-on-dark);
       margin: 0 0 20px;
       font-weight: 600;
     }
     .footer-section a {
       display: block;
-      color: #888;
+      color: var(--muted-text);
       text-decoration: none;
       font-size: 13px;
       margin-bottom: 12px;
       transition: color 0.3s;
     }
-    .footer-section a:hover { color: #9BA88E; }
+    .footer-section a:hover { color: var(--accent-color); }
     .footer-bottom {
-      border-top: 1px solid #2a2a2a;
+      border-top: 1px solid var(--border-color);
       padding-top: 30px;
       text-align: center;
       font-size: 11px;
@@ -444,6 +446,7 @@
     <img src="logo.png" alt="Lindi Logo" class="logo-img">
     <span class="brand-name">LINDI</span>
   </a>
+    <button id="theme-toggle" aria-label="Toggle Theme" style="background:none; border:none; cursor:pointer; font-size:20px; padding:0; margin-left:10px;"></button>
   <div class="nav-links">
     <a href="index.html" class="nav-link">Home</a>
     <a href="shop.html" class="nav-link">Shop</a>
