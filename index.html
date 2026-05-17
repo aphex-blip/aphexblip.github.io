@@ -4,8 +4,6 @@
   <meta charset="UTF-8">
   <title>LINDI CLOTHING | Sustainable Style</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="vars.css">
-  <script src="theme.js"></script>
   <link rel="icon" type="image/png" href="favicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
@@ -13,14 +11,14 @@
     body { 
       font-family: 'Inter', sans-serif; 
       margin: 0; 
-      background: var(--bg-color);
-      color: var(--text-color);
+      background: #fafafa;
+      color: #1a1a1a;
       overflow-x: hidden; 
     }
 
     /* --- NAVIGATION --- */
     nav {
-      background: var(--nav-bg);
+      background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(10px);
       padding: 18px 40px;
       display: flex;
@@ -31,12 +29,12 @@
       left: 0;
       right: 0;
       z-index: 1000;
-      border-bottom: 1px solid var(--nav-border);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
       transition: padding 0.3s, box-shadow 0.3s;
     }
     nav.scrolled { 
       padding: 12px 40px; 
-      box-shadow: 0 2px 20px var(--card-shadow);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
     }
     .logo-container { 
       display: flex; 
@@ -49,13 +47,13 @@
     .brand-name { 
       font-size: 18px; 
       letter-spacing: 6px; 
-      color: var(--text-color);
+      color: #1a1a1a;
       font-weight: 600; 
       text-transform: uppercase; 
     }
     .nav-links { display: flex; align-items: center; gap: 32px; }
     .nav-link { 
-      color: var(--secondary-text);
+      color: #444;
       text-decoration: none; 
       font-size: 12px; 
       letter-spacing: 1.2px; 
@@ -71,15 +69,15 @@
       left: 0;
       width: 0;
       height: 2px;
-      background: var(--accent-color);
+      background: #9BA88E;
       transition: width 0.3s;
     }
-    .nav-link:hover { color: var(--accent-color); }
+    .nav-link:hover { color: #9BA88E; }
     .nav-link:hover::after { width: 100%; }
     .nav-cta {
       padding: 10px 24px;
-      background: var(--footer-bg);
-      color: var(--text-on-dark);
+      background: #1a1a1a;
+      color: #fff !important;
       border-radius: 30px;
       font-size: 11px;
       letter-spacing: 1.5px;
@@ -88,9 +86,9 @@
       transition: all 0.3s;
     }
     .nav-cta:hover { 
-      background: var(--accent-color);
+      background: #9BA88E;
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(var(--accent-rgb), 0.3);
+      box-shadow: 0 4px 12px rgba(155, 168, 142, 0.3);
     }
     .mobile-menu-btn {
       display: none;
@@ -104,7 +102,7 @@
       display: block;
       width: 24px;
       height: 2px;
-      background: var(--footer-bg);
+      background: #1a1a1a;
       margin: 5px 0;
       transition: 0.3s;
     }
@@ -114,7 +112,7 @@
       position: relative;
       height: 100vh;
       width: 100%;
-      background: var(--hero-overlay);
+      background: linear-gradient(135deg, #1a1a1a 0%, #3a3a3a 100%);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -136,7 +134,7 @@
     .hero-content { 
       position: relative; 
       z-index: 2; 
-      color: var(--secondary-bg);
+      color: white;
       padding: 0 20px;
       animation: fadeInUp 1s ease-out;
     }
@@ -148,7 +146,7 @@
       font-size: 12px;
       letter-spacing: 4px;
       text-transform: uppercase;
-      color: var(--accent-color);
+      color: #9BA88E;
       margin-bottom: 16px;
       font-weight: 500;
     }
@@ -176,8 +174,8 @@
     .hero-btn {
       display: inline-block;
       padding: 16px 40px;
-      background: var(--secondary-bg);
-      color: var(--text-color);
+      background: #fff;
+      color: #1a1a1a;
       text-decoration: none;
       font-size: 11px;
       letter-spacing: 2px;
@@ -185,22 +183,22 @@
       text-transform: uppercase;
       border-radius: 30px;
       transition: all 0.3s;
-      box-shadow: 0 4px 15px rgba(var(--bg-rgb-fallback, 255,255,255), 0.2);
+      box-shadow: 0 4px 15px rgba(255,255,255,0.2);
     }
     .hero-btn:hover { 
-      background: var(--accent-color);
-      color: var(--secondary-bg);
+      background: #9BA88E;
+      color: #fff;
       transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(var(--accent-rgb), 0.4);
+      box-shadow: 0 8px 25px rgba(155, 168, 142, 0.4);
     }
     .hero-btn.secondary {
       background: transparent;
-      border: 2px solid var(--secondary-bg);
-      color: var(--secondary-bg);
+      border: 2px solid #fff;
+      color: #fff;
     }
     .hero-btn.secondary:hover {
-      background: var(--secondary-bg);
-      color: var(--text-color);
+      background: #fff;
+      color: #1a1a1a;
     }
     .scroll-indicator {
       position: absolute;
@@ -217,14 +215,14 @@
     .scroll-indicator svg {
       width: 24px;
       height: 24px;
-      fill: var(--secondary-bg);
+      fill: #fff;
       opacity: 0.7;
     }
 
     /* --- HOT PICKS --- */
     .hot-picks-section { 
       padding: 100px 0; 
-      background: var(--secondary-bg);
+      background: #fff;
       position: relative;
     }
     .section-eyebrow { 
@@ -232,7 +230,7 @@
       font-size: 11px; 
       letter-spacing: 5px; 
       text-transform: uppercase; 
-      color: var(--accent-color);
+      color: #9BA88E;
       font-weight: 500; 
       margin-bottom: 8px; 
     }
@@ -241,7 +239,7 @@
       font-size: 36px; 
       font-weight: 300; 
       letter-spacing: 4px; 
-      color: var(--text-color);
+      color: #1a1a1a;
       margin: 0 0 60px; 
       text-transform: uppercase;
     }
@@ -266,15 +264,15 @@
       position: relative;
       width: 100%;
       aspect-ratio: 3/4;
-      background: var(--light-grey);
+      background: #f8f8f8;
       border-radius: 12px;
       overflow: hidden;
       margin-bottom: 18px;
-      box-shadow: 0 4px 20px var(--card-shadow);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
       transition: box-shadow 0.3s;
     }
     .hp-card:hover .hp-img-wrap {
-      box-shadow: 0 12px 40px var(--card-shadow-hover);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
     }
     .hp-img-wrap img { 
       width: 100%; 
@@ -289,8 +287,8 @@
       position: absolute;
       top: 16px;
       left: 16px;
-      background: var(--footer-bg);
-      color: var(--secondary-bg);
+      background: #1a1a1a;
+      color: #fff;
       font-size: 9px;
       letter-spacing: 2.5px;
       font-weight: 600;
@@ -299,19 +297,19 @@
       border-radius: 20px;
       z-index: 2;
     }
-    .hp-badge.hot { background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-dark) 100%); }
+    .hp-badge.hot { background: linear-gradient(135deg, #9BA88E 0%, #7a8a6e 100%); }
 
     .hp-card-name { 
       font-size: 14px; 
       letter-spacing: 1.5px; 
       text-transform: uppercase; 
-      color: var(--text-color);
+      color: #1a1a1a;
       font-weight: 600; 
       margin: 0 0 6px; 
     }
     .hp-card-sub { 
       font-size: 12px; 
-      color: var(--muted-text);
+      color: #888;
       font-weight: 300; 
       margin: 0 0 14px; 
     }
@@ -322,13 +320,13 @@
       font-size: 10px; 
       letter-spacing: 2px; 
       text-transform: uppercase; 
-      color: var(--accent-color);
+      color: #9BA88E;
       font-weight: 600; 
     }
     .hp-cta-line { 
       flex: 1; 
       height: 2px; 
-      background: linear-gradient(90deg, var(--accent-color), transparent);
+      background: linear-gradient(90deg, #9BA88E, transparent);
       opacity: 0.5; 
       transition: opacity 0.3s; 
     }
@@ -341,7 +339,7 @@
       width: 50px;
       height: 50px;
       border-radius: 50%;
-      background: var(--secondary-bg);
+      background: #fff;
       border: none;
       display: flex;
       align-items: center;
@@ -352,26 +350,26 @@
       transition: all 0.3s;
     }
     .hp-btn:hover { 
-      background: var(--accent-color);
+      background: #9BA88E;
       transform: translateY(-50%) scale(1.1);
-      box-shadow: 0 6px 30px rgba(var(--accent-rgb), 0.4);
+      box-shadow: 0 6px 30px rgba(155, 168, 142, 0.4);
     }
-    .hp-btn svg { width: 20px; fill: var(--text-color); transition: fill 0.2s; }
-    .hp-btn:hover svg { fill: var(--secondary-bg); }
+    .hp-btn svg { width: 20px; fill: #1a1a1a; transition: fill 0.2s; }
+    .hp-btn:hover svg { fill: #fff; }
     .hp-prev { left: 20px; }
     .hp-next { right: 20px; }
 
     .hp-dots { display: flex; justify-content: center; gap: 10px; margin-top: 40px; }
     .hp-dot {
       width: 8px; height: 8px; border-radius: 50%;
-      background: var(--border-color); border: none; padding: 0; cursor: pointer;
+      background: #ddd; border: none; padding: 0; cursor: pointer;
       transition: all 0.3s;
     }
-    .hp-dot:hover { background: var(--border-color); }
+    .hp-dot:hover { background: #bbb; }
     .hp-dot.active { 
-      background: var(--accent-color);
+      background: #9BA88E;
       transform: scale(1.5);
-      box-shadow: 0 2px 8px rgba(var(--accent-rgb), 0.4);
+      box-shadow: 0 2px 8px rgba(155, 168, 142, 0.4);
     }
 
     /* --- PILLARS --- */
@@ -383,24 +381,24 @@
       max-width: 1200px;
       margin: 0 auto;
       text-align: center;
-      background: var(--bg-color);
+      background: #fafafa;
     }
     .pillar-item {
       padding: 40px 30px;
-      background: var(--secondary-bg);
+      background: #fff;
       border-radius: 12px;
       transition: all 0.3s;
-      box-shadow: 0 2px 10px var(--card-shadow);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
     .pillar-item:hover {
       transform: translateY(-8px);
-      box-shadow: 0 12px 30px var(--card-shadow);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.1);
     }
     .pillar-item svg { 
       width: 40px; 
       height: 40px; 
       margin-bottom: 24px; 
-      fill: var(--accent-color);
+      fill: #9BA88E;
       transition: transform 0.3s;
     }
     .pillar-item:hover svg { transform: scale(1.1); }
@@ -410,11 +408,11 @@
       text-transform: uppercase; 
       font-weight: 600; 
       margin: 0 0 14px;
-      color: var(--text-color);
+      color: #1a1a1a;
     }
     .pillar-item p { 
       font-size: 14px; 
-      color: var(--secondary-text);
+      color: #666;
       font-weight: 300; 
       line-height: 1.8; 
       margin: 0; 
@@ -422,8 +420,8 @@
 
     /* --- FOOTER --- */
     footer {
-      background: var(--footer-bg);
-      color: var(--footer-text);
+      background: #1a1a1a;
+      color: #999;
       padding: 60px 40px 30px;
     }
     .footer-content {
@@ -438,14 +436,14 @@
       font-size: 20px;
       letter-spacing: 6px;
       text-transform: uppercase;
-      color: var(--secondary-bg);
+      color: #fff;
       margin: 0 0 16px;
       font-weight: 600;
     }
     .footer-brand p {
       font-size: 13px;
       line-height: 1.8;
-      color: var(--muted-text);
+      color: #888;
       margin: 0 0 20px;
     }
     .social-links {
@@ -455,7 +453,7 @@
     .social-links a {
       width: 36px;
       height: 36px;
-      background: var(--secondary-bg);
+      background: #2a2a2a;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -463,33 +461,33 @@
       transition: all 0.3s;
     }
     .social-links a:hover {
-      background: var(--accent-color);
+      background: #9BA88E;
       transform: translateY(-3px);
     }
     .social-links svg {
       width: 16px;
       height: 16px;
-      fill: var(--secondary-bg);
+      fill: #fff;
     }
     .footer-section h4 {
       font-size: 12px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--secondary-bg);
+      color: #fff;
       margin: 0 0 20px;
       font-weight: 600;
     }
     .footer-section a {
       display: block;
-      color: var(--muted-text);
+      color: #888;
       text-decoration: none;
       font-size: 13px;
       margin-bottom: 12px;
       transition: color 0.3s;
     }
-    .footer-section a:hover { color: var(--accent-color); }
+    .footer-section a:hover { color: #9BA88E; }
     .footer-bottom {
-      border-top: 1px solid var(--border-color);
+      border-top: 1px solid #2a2a2a;
       padding-top: 30px;
       text-align: center;
       font-size: 11px;
@@ -508,11 +506,11 @@
         top: 100%;
         left: 0;
         width: 100%;
-        background: var(--secondary-bg);
+        background: #fff;
         padding: 40px;
         gap: 24px;
-        border-bottom: 1px solid var(--nav-border);
-        box-shadow: 0 10px 30px var(--card-shadow);
+        border-bottom: 1px solid rgba(0,0,0,0.06);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         text-align: center;
       }
 
@@ -551,7 +549,6 @@
     <img src="logo.png" alt="Lindi Logo" class="logo-img">
     <span class="brand-name">LINDI</span>
   </a>
-    <button id="theme-toggle" aria-label="Toggle Theme" style="background:none; border:none; cursor:pointer; font-size:20px; padding:0; margin-left:10px;"></button>
   
   <div class="nav-links" id="navLinks">
     <a href="index.html" class="nav-link">Home</a>
