@@ -803,23 +803,48 @@
   // Store products globally
   let allProducts = [];
 
-  // Parse CSV
+  // Parse CSV (handles commas in quoted fields)
   function parseCSV(csv) {
-    const lines = csv.split('\n');
-    const headers = lines[0].split(',');
+    const lines = csv.trim().split('\n');
+    const result = [];
+    
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i];
+      const row = [];
+      let cell = '';
+      let inQuotes = false;
+      
+      for (let j = 0; j < line.length; j++) {
+        const char = line[j];
+        
+        if (char === '"') {
+          inQuotes = !inQuotes;
+        } else if (char === ',' && !inQuotes) {
+          row.push(cell.trim());
+          cell = '';
+        } else {
+          cell += char;
+        }
+      }
+      row.push(cell.trim());
+      result.push(row);
+    }
+    
+    // Convert to objects
+    const headers = result[0];
     const products = [];
     
-    for (let i = 1; i < lines.length; i++) {
-      if (!lines[i].trim()) continue;
-      const values = lines[i].split(',');
+    for (let i = 1; i < result.length; i++) {
+      if (result[i].length < headers.length) continue;
       const product = {};
       headers.forEach((header, index) => {
-        product[header.trim()] = values[index] ? values[index].trim() : '';
+        product[header.trim()] = result[i][index] ? result[i][index].trim() : '';
       });
       if (product['Product Name']) {
         products.push(product);
       }
     }
+    
     return products;
   }
 
@@ -851,11 +876,19 @@
     const grid = document.getElementById('grid');
     grid.innerHTML = '';
 
+    if (products.length === 0) {
+      grid.innerHTML = '<p style="text-align: center; width: 100%; padding: 40px; color: #999;">No products found.</p>';
+      return;
+    }
+
     products.forEach((product, index) => {
       const imageUrl = convertDriveUrl(product['Image URLs']);
-      const category = product['Category'].toLowerCase();
-      const price = parseFloat(product['Price']);
+      const category = (product['Category'] || 'tees').toLowerCase();
+      const priceStr = (product['Price'] || '0').replace(/[^0-9.]/g, '');
+      const price = parseFloat(priceStr) || 0;
       const formattedPrice = `Rs. ${price.toLocaleString()}`;
+      
+      console.log('Product:', product['Product Name'], 'Image:', imageUrl, 'Price:', formattedPrice);
       
       // Determine badge
       let badge = '';
@@ -869,7 +902,7 @@
         <div class="product" data-category="${category}">
           <div class="product-image-wrapper" onclick="openModal(this)" data-product-index="${index}">
             ${badge}
-            <img src="${imageUrl}" alt="${product['Product Name']}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'500\'%3E%3Crect fill=\'%23f0f0f0\' width=\'400\' height=\'500\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\' font-size=\'18\' fill=\'%23999\'%3EImage not available%3C/text%3E%3C/svg%3E'">
+            <img src="${imageUrl}" alt="${product['Product Name']}" onerror="this.onerror=null; this.src='https://via.placeholder.com/280x370/f8f8f8/999?text=${encodeURIComponent(product['Product Name'])}';">
             <button class="quick-view-btn">Quick View</button>
           </div>
           <div class="product-info">
@@ -961,11 +994,18 @@
     const productIndex = parseInt(wrapper.dataset.productIndex);
     const product = allProducts[productIndex];
     
-    if (!product) return;
+    if (!product) {
+      console.error('Product not found at index:', productIndex);
+      return;
+    }
 
     const imageUrl = convertDriveUrl(product['Image URLs']);
-    const price = parseFloat(product['Price']);
+    const priceStr = (product['Price'] || '0').replace(/[^0-9.]/g, '');
+    const price = parseFloat(priceStr) || 0;
     const formattedPrice = `Rs. ${price.toLocaleString()}`;
+    const description = product['Description'] || 'Handcrafted with care in Sri Lanka. Made from premium sustainable materials.';
+
+    console.log('Opening modal for:', product['Product Name'], 'Description:', description);
 
     modalSelectedSize = null;
 
@@ -973,7 +1013,7 @@
     document.getElementById('modalImg').alt = product['Product Name'];
     document.getElementById('modalTitle').textContent = product['Product Name'];
     document.getElementById('modalPrice').textContent = formattedPrice;
-    document.getElementById('modalDesc').textContent = product['Description'] || '';
+    document.getElementById('modalDesc').textContent = description;
 
     const sizesEl = document.getElementById('modalSizes');
     sizesEl.innerHTML = '';
