@@ -11,8 +11,8 @@
     body { 
       font-family: 'Inter', sans-serif; 
       margin: 0; 
-      background: #fafafa;
-      color: #1a1a1a;
+      background: #fafafa; 
+      color: #1a1a1a; 
       overflow-x: hidden; 
     }
 
@@ -47,13 +47,13 @@
     .brand-name { 
       font-size: 18px; 
       letter-spacing: 6px; 
-      color: #1a1a1a;
+      color: #1a1a1a; 
       font-weight: 600; 
       text-transform: uppercase; 
     }
     .nav-links { display: flex; align-items: center; gap: 32px; }
     .nav-link { 
-      color: #444;
+      color: #444; 
       text-decoration: none; 
       font-size: 12px; 
       letter-spacing: 1.2px; 
@@ -77,7 +77,7 @@
     .nav-cta {
       padding: 10px 24px;
       background: #1a1a1a;
-      color: #fff !important;
+      color: #fff;
       border-radius: 30px;
       font-size: 11px;
       letter-spacing: 1.5px;
@@ -86,7 +86,7 @@
       transition: all 0.3s;
     }
     .nav-cta:hover { 
-      background: #9BA88E;
+      background: #9BA88E; 
       transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(155, 168, 142, 0.3);
     }
@@ -105,6 +105,68 @@
       background: #1a1a1a;
       margin: 5px 0;
       transition: 0.3s;
+    }
+    .mobile-menu-btn.active span:nth-child(1) {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    .mobile-menu-btn.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .mobile-menu-btn.active span:nth-child(3) {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 70%;
+      max-width: 300px;
+      height: 100vh;
+      background: #fff;
+      box-shadow: -4px 0 20px rgba(0,0,0,0.1);
+      z-index: 999;
+      padding: 80px 30px 30px;
+      transition: right 0.3s ease;
+    }
+    .mobile-menu.open {
+      right: 0;
+    }
+    .mobile-menu a {
+      display: block;
+      color: #444;
+      text-decoration: none;
+      font-size: 14px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 500;
+      padding: 16px 0;
+      border-bottom: 1px solid #f0f0f0;
+      transition: color 0.3s;
+    }
+    .mobile-menu a:hover {
+      color: #9BA88E;
+    }
+    .mobile-menu .nav-cta {
+      margin-top: 20px;
+      padding: 14px 24px;
+      text-align: center;
+      background: #1a1a1a;
+      color: #fff;
+      border-radius: 30px;
+      border: none;
+    }
+    .mobile-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 998;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .mobile-overlay.open {
+      opacity: 1;
+      pointer-events: all;
     }
 
     /* --- HERO --- */
@@ -134,7 +196,7 @@
     .hero-content { 
       position: relative; 
       z-index: 2; 
-      color: white;
+      color: white; 
       padding: 0 20px;
       animation: fadeInUp 1s ease-out;
     }
@@ -186,7 +248,7 @@
       box-shadow: 0 4px 15px rgba(255,255,255,0.2);
     }
     .hero-btn:hover { 
-      background: #9BA88E;
+      background: #9BA88E; 
       color: #fff;
       transform: translateY(-3px);
       box-shadow: 0 8px 25px rgba(155, 168, 142, 0.4);
@@ -230,7 +292,7 @@
       font-size: 11px; 
       letter-spacing: 5px; 
       text-transform: uppercase; 
-      color: #9BA88E;
+      color: #9BA88E; 
       font-weight: 500; 
       margin-bottom: 8px; 
     }
@@ -239,7 +301,7 @@
       font-size: 36px; 
       font-weight: 300; 
       letter-spacing: 4px; 
-      color: #1a1a1a;
+      color: #1a1a1a; 
       margin: 0 0 60px; 
       text-transform: uppercase;
     }
@@ -303,13 +365,13 @@
       font-size: 14px; 
       letter-spacing: 1.5px; 
       text-transform: uppercase; 
-      color: #1a1a1a;
+      color: #1a1a1a; 
       font-weight: 600; 
       margin: 0 0 6px; 
     }
     .hp-card-sub { 
       font-size: 12px; 
-      color: #888;
+      color: #888; 
       font-weight: 300; 
       margin: 0 0 14px; 
     }
@@ -320,7 +382,7 @@
       font-size: 10px; 
       letter-spacing: 2px; 
       text-transform: uppercase; 
-      color: #9BA88E;
+      color: #9BA88E; 
       font-weight: 600; 
     }
     .hp-cta-line { 
@@ -350,7 +412,7 @@
       transition: all 0.3s;
     }
     .hp-btn:hover { 
-      background: #9BA88E;
+      background: #9BA88E; 
       transform: translateY(-50%) scale(1.1);
       box-shadow: 0 6px 30px rgba(155, 168, 142, 0.4);
     }
@@ -367,7 +429,7 @@
     }
     .hp-dot:hover { background: #bbb; }
     .hp-dot.active { 
-      background: #9BA88E;
+      background: #9BA88E; 
       transform: scale(1.5);
       box-shadow: 0 2px 8px rgba(155, 168, 142, 0.4);
     }
@@ -412,7 +474,7 @@
     }
     .pillar-item p { 
       font-size: 14px; 
-      color: #666;
+      color: #666; 
       font-weight: 300; 
       line-height: 1.8; 
       margin: 0; 
@@ -495,35 +557,10 @@
       text-transform: uppercase;
     }
 
-    /* --- RESPONSIVE & MOBILE NAV FIX --- */
+    /* --- RESPONSIVE --- */
     @media (max-width: 968px) {
+      .nav-links { display: none; }
       .mobile-menu-btn { display: block; }
-      
-      .nav-links { 
-        display: none; /* Hidden by default */
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: #fff;
-        padding: 40px;
-        gap: 24px;
-        border-bottom: 1px solid rgba(0,0,0,0.06);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        text-align: center;
-      }
-
-      /* When menu is open */
-      .nav-links.active {
-        display: flex;
-      }
-
-      /* Animation for Hamburger to X */
-      .mobile-menu-btn.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-      .mobile-menu-btn.active span:nth-child(2) { opacity: 0; }
-      .mobile-menu-btn.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
       .hero-content h1 { font-size: 40px; letter-spacing: 8px; }
       .section-heading { font-size: 28px; }
       .footer-content { grid-template-columns: 1fr; gap: 40px; }
@@ -549,20 +586,27 @@
     <img src="logo.png" alt="Lindi Logo" class="logo-img">
     <span class="brand-name">LINDI</span>
   </a>
-  
-  <div class="nav-links" id="navLinks">
+  <div class="nav-links">
     <a href="index.html" class="nav-link">Home</a>
     <a href="shop.html" class="nav-link">Shop</a>
     <a href="about.html" class="nav-link">About</a>
     <a href="shop.html" class="nav-link nav-cta">Shop Now</a>
   </div>
-
-  <button class="mobile-menu-btn" id="menuBtn" aria-label="Toggle Menu">
+  <button class="mobile-menu-btn" id="mobileMenuBtn">
     <span></span>
     <span></span>
     <span></span>
   </button>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="shop.html">Shop</a>
+  <a href="about.html">About</a>
+  <a href="shop.html" class="nav-cta">Shop Now</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -592,45 +636,7 @@
     </button>
 
     <div class="hp-track" id="track">
-      <div class="hp-card" onclick="openWA('Grey Hoodie')">
-        <div class="hp-img-wrap">
-          <span class="hp-badge hot">Hot</span>
-          <img src="grey-hoodie.jpg" alt="Grey Hoodie">
-        </div>
-        <p class="hp-card-name">Grey Hoodie</p>
-        <p class="hp-card-sub">Organic cotton blend</p>
-        <div class="hp-cta"><span class="hp-cta-line"></span>Order Now</div>
-      </div>
-
-      <div class="hp-card" onclick="openWA('Black Tee')">
-        <div class="hp-img-wrap">
-          <span class="hp-badge hot">Hot</span>
-          <img src="black-t-shirt.jpg" alt="Black Tee">
-        </div>
-        <p class="hp-card-name">Black Tee</p>
-        <p class="hp-card-sub">Handcrafted in Sri Lanka</p>
-        <div class="hp-cta"><span class="hp-cta-line"></span>Order Now</div>
-      </div>
-
-      <div class="hp-card" onclick="openWA('Signature Tee')">
-        <div class="hp-img-wrap">
-          <span class="hp-badge">New</span>
-          <img src="product3.jpg" alt="Signature Tee">
-        </div>
-        <p class="hp-card-name">Signature Tee</p>
-        <p class="hp-card-sub">Timeless everyday wear</p>
-        <div class="hp-cta"><span class="hp-cta-line"></span>Order Now</div>
-      </div>
-
-      <div class="hp-card" onclick="openWA('Linen Shirt')">
-        <div class="hp-img-wrap">
-          <span class="hp-badge">New</span>
-          <img src="grey-hoodie.jpg" alt="Linen Shirt">
-        </div>
-        <p class="hp-card-name">Linen Shirt</p>
-        <p class="hp-card-sub">Breathable & sustainable</p>
-        <div class="hp-cta"><span class="hp-cta-line"></span>Order Now</div>
-      </div>
+      <p style="text-align: center; width: 100%; padding: 40px; color: #999;">Loading products...</p>
     </div>
 
     <button class="hp-btn hp-next" id="nextBtn" aria-label="Next">
@@ -700,21 +706,138 @@
 </footer>
 
 <script>
-  // Mobile Menu Toggle
-  const menuBtn = document.getElementById('menuBtn');
-  const navLinks = document.getElementById('navLinks');
+  // Google Sheets CSV URL
+  const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTyn9TEs3uohcqEIEprT17tWsA6br8xHRO5i0ElG3-lrYaMAOK5vWKCKyGYA-6IdJKclOwkcXUMuQdh/pub?gid=0&single=true&output=csv';
 
-  menuBtn.addEventListener('click', () => {
-    menuBtn.classList.toggle('active');
-    navLinks.classList.toggle('active');
+  // Parse CSV
+  function parseCSV(csv) {
+    const lines = csv.split('\n');
+    const headers = lines[0].split(',');
+    const products = [];
+    
+    for (let i = 1; i < lines.length; i++) {
+      if (!lines[i].trim()) continue;
+      const values = lines[i].split(',');
+      const product = {};
+      headers.forEach((header, index) => {
+        product[header.trim()] = values[index] ? values[index].trim() : '';
+      });
+      if (product['Product Name']) {
+        products.push(product);
+      }
+    }
+    return products;
+  }
+
+  // Convert Google Drive URL to direct image URL
+  function convertDriveUrl(url) {
+    if (!url) return '';
+    const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+    if (match) {
+      return `https://drive.google.com/uc?export=view&id=${match[1]}`;
+    }
+    return url;
+  }
+
+  // Load products from Google Sheets
+  async function loadProducts() {
+    try {
+      const response = await fetch(SHEET_URL);
+      const csv = await response.text();
+      const products = parseCSV(csv);
+      renderCarousel(products);
+    } catch (error) {
+      console.error('Error loading products:', error);
+      document.getElementById('track').innerHTML = '<p style="text-align: center; width: 100%; padding: 40px; color: #c0392b;">Failed to load products. Please refresh.</p>';
+    }
+  }
+
+  // Render carousel products
+  function renderCarousel(products) {
+    const track = document.getElementById('track');
+    track.innerHTML = '';
+
+    // Only show first 4 products in carousel
+    const carouselProducts = products.slice(0, 4);
+
+    carouselProducts.forEach((product, index) => {
+      const imageUrl = convertDriveUrl(product['Image URLs']);
+      const price = parseFloat(product['Price']);
+      const formattedPrice = `Rs. ${price.toLocaleString()}`;
+      
+      let badge = '';
+      if (index === 0 || index === 1) {
+        badge = '<span class="hp-badge hot">Hot</span>';
+      } else {
+        badge = '<span class="hp-badge">New</span>';
+      }
+
+      const card = document.createElement('div');
+      card.className = 'hp-card';
+      card.onclick = () => openWA(product['Product Name']);
+      card.innerHTML = `
+        <div class="hp-img-wrap">
+          ${badge}
+          <img src="${imageUrl}" alt="${product['Product Name']}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'280\' height=\'370\'%3E%3Crect fill=\'%23f0eeea\' width=\'280\' height=\'370\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%23999\'%3EImage unavailable%3C/text%3E%3C/svg%3E'">
+        </div>
+        <p class="hp-card-name">${product['Product Name']}</p>
+        <p class="hp-card-sub">${product['Description'] ? product['Description'].substring(0, 30) + '...' : 'Handcrafted in Sri Lanka'}</p>
+        <div class="hp-cta"><span class="hp-cta-line"></span>Order Now</div>
+      `;
+      track.appendChild(card);
+    });
+
+    initCarousel();
+  }
+
+  // Initialize carousel controls
+  function initCarousel() {
+    const track = document.getElementById('track');
+    const dotsEl = document.getElementById('dots');
+    const cards = track.querySelectorAll('.hp-card');
+    const CARD_W = 280 + 28;
+    const VISIBLE = 3;
+    const MAX = Math.max(0, cards.length - VISIBLE);
+    let cur = 0;
+
+    dotsEl.innerHTML = '';
+
+    // Create dots
+    for (let i = 0; i <= MAX; i++) {
+      const d = document.createElement('button');
+      d.className = 'hp-dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+      d.onclick = () => go(i);
+      dotsEl.appendChild(d);
+    }
+
+    function go(n) {
+      cur = Math.max(0, Math.min(n, MAX));
+      track.style.transform = 'translateX(-' + (cur * CARD_W) + 'px)';
+      dotsEl.querySelectorAll('.hp-dot').forEach((d, i) => d.classList.toggle('active', i === cur));
+    }
+
+    document.getElementById('nextBtn').onclick = () => go(cur + 1);
+    document.getElementById('prevBtn').onclick = () => go(cur - 1);
+  }
+
+  // Mobile menu
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+
+  mobileMenuBtn.addEventListener('click', () => {
+    mobileMenuBtn.classList.toggle('active');
+    mobileMenu.classList.toggle('open');
+    mobileOverlay.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
   });
 
-  // Close menu when a link is clicked
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-      menuBtn.classList.remove('active');
-      navLinks.classList.remove('active');
-    });
+  mobileOverlay.addEventListener('click', () => {
+    mobileMenuBtn.classList.remove('active');
+    mobileMenu.classList.remove('open');
+    mobileOverlay.classList.remove('open');
+    document.body.style.overflow = '';
   });
 
   // Scroll effect on nav
@@ -732,40 +855,8 @@
     window.open('https://wa.me/94725050456?text=Interested in ' + encodeURIComponent(item), '_blank');
   }
 
-  // Carousel Logic
-  const track = document.getElementById('track');
-  const dotsEl = document.getElementById('dots');
-  const cards = track.querySelectorAll('.hp-card');
-  const CARD_W = 280 + 28;
-  const VISIBLE = window.innerWidth > 968 ? 3 : 1;
-  const MAX = Math.max(0, cards.length - VISIBLE);
-  let cur = 0;
-
-  cards.forEach((_, i) => {
-    if (i <= MAX) {
-      const d = document.createElement('button');
-      d.className = 'hp-dot' + (i === 0 ? ' active' : '');
-      d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
-      d.onclick = () => go(i);
-      dotsEl.appendChild(d);
-    }
-  });
-
-  function go(n) {
-    cur = Math.max(0, Math.min(n, MAX));
-    track.style.transform = 'translateX(-' + (cur * CARD_W) + 'px)';
-    const dots = dotsEl.querySelectorAll('.hp-dot');
-    dots.forEach((d, i) => d.classList.toggle('active', i === cur));
-  }
-
-  document.getElementById('nextBtn').onclick = () => go(cur + 1);
-  document.getElementById('prevBtn').onclick = () => go(cur - 1);
-
-  // Re-calculate VISIBLE on resize for carousel
-  window.addEventListener('resize', () => {
-    const newVisible = window.innerWidth > 968 ? 3 : 1;
-    // Simple refresh logic if needed
-  });
+  // Load products on page load
+  loadProducts();
 </script>
 
 </body>
