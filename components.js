@@ -2,14 +2,14 @@ class SiteHeader extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
       <nav id="nav">
-        <a href="index.html" class="logo-container">
+        <a href="/" class="logo-container">
           <img src="logo.png" alt="Lindi Logo" class="logo-img">
           <span class="brand-name">LINDI</span>
         </a>
         <div class="nav-links">
-          <a href="index.html" class="nav-link">Home</a>
-          <a href="about.html" class="nav-link">About</a>
-          <a href="shop.html" class="nav-link nav-cta">Shop Now</a>
+          <a href="/" class="nav-link">Home</a>
+          <a href="/about" class="nav-link">About</a>
+          <a href="/shop" class="nav-link nav-cta">Shop Now</a>
         </div>
         <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
           <span></span>
@@ -19,9 +19,9 @@ class SiteHeader extends HTMLElement {
       </nav>
       <div class="mobile-overlay" id="mobileOverlay"></div>
       <div class="mobile-menu" id="mobileMenu">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="shop.html" class="nav-cta">Shop Now</a>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/shop" class="nav-cta">Shop Now</a>
       </div>
     `;
 
@@ -76,17 +76,17 @@ class SiteFooter extends HTMLElement {
           </div>
           <div class="footer-section">
             <h4>Shop</h4>
-            <a href="shop.html">All Products</a>
-            <a href="shop.html">Tees</a>
-            <a href="shop.html">Hoodies</a>
-            <a href="shop.html">Bottoms</a>
+            <a href="/shop">All Products</a>
+            <a href="/shop">Tees</a>
+            <a href="/shop">Hoodies</a>
+            <a href="/shop">Bottoms</a>
           </div>
           <div class="footer-section">
             <h4>About</h4>
-            <a href="about.html">Our Story</a>
-            <a href="about.html">Sustainability</a>
-            <a href="about.html">Artisans</a>
-            <a href="about.html">Contact</a>
+            <a href="/about">Our Story</a>
+            <a href="/about">Sustainability</a>
+            <a href="/about">Artisans</a>
+            <a href="/about">Contact</a>
           </div>
           <div class="footer-section">
             <h4>Support</h4>
