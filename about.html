@@ -166,10 +166,35 @@
       margin: 0;
     }
 
+    /* --- VIDEO SECTION --- */
+    .video-section {
+      max-width: 800px;
+      margin: 80px auto 0;
+      padding: 0 40px;
+      text-align: center;
+    }
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      background: #1a1a1a;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
     /* --- STORY SECTION --- */
     .story-section {
       max-width: 900px;
-      margin: 100px auto;
+      margin: 80px auto 100px;
       padding: 0 40px;
       text-align: center;
     }
@@ -432,8 +457,9 @@
       nav { padding: 15px 20px; }
       .about-hero { height: 50vh; }
       .about-hero h1 { font-size: 32px; letter-spacing: 4px; }
+      .video-section { margin: 40px auto 0; padding: 0 20px; }
       .section-title { font-size: 24px; }
-      .story-section { margin: 60px auto; padding: 0 20px; }
+      .story-section { margin: 40px auto 60px; padding: 0 20px; }
       .values-section { padding: 60px 20px; }
       .artisans-section { padding: 60px 20px; }
       .cta-section { padding: 60px 20px; }
@@ -452,6 +478,13 @@
     <p class="about-hero-eyebrow">Our Story</p>
     <h1>About Lindi</h1>
     <p>Where tradition meets conscious design. Creating timeless pieces that honor both people and planet.</p>
+  </div>
+</section>
+
+<!-- EMBEDDED VIDEO -->
+<section class="video-section">
+  <div class="video-container">
+    <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4186209594960542%2F&show_text=false&width=560&t=0" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
   </div>
 </section>
 
@@ -528,10 +561,12 @@
   // Scroll effect on nav
   window.addEventListener('scroll', () => {
     const nav = document.getElementById('nav');
-    if (window.scrollY > 50) {
-      nav.classList.add('scrolled');
-    } else {
-      nav.classList.remove('scrolled');
+    if (nav) {
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
     }
   });
 </script>
